@@ -1,0 +1,176 @@
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
+using OOP_Semester.Models;
+
+namespace OOP_Semester.ViewModels
+{
+    public class FeedingViewModel : ViewModelBase
+    {
+        // Simple display model for pet info used by the view
+        public class PetDisplay : ViewModelBase
+        {
+            private string _avatar;
+            public string Avatar { get => _avatar; set => SetProperty(ref _avatar, value); }
+
+            private string _name;
+            public string Name { get => _name; set => SetProperty(ref _name, value); }
+
+            private int _level;
+            public int Level { get => _level; set => SetProperty(ref _level, value); }
+
+            private int _currentExp;
+            public int CurrentExp { get => _currentExp; set => SetProperty(ref _currentExp, value); }
+
+            private int _maxExp;
+            public int MaxExp { get => _maxExp; set => SetProperty(ref _maxExp, value); }
+
+            private int _hunger;
+            public int Hunger { get => _hunger; set => SetProperty(ref _hunger, value); }
+
+            private int _happiness;
+            public int Happiness { get => _happiness; set => SetProperty(ref _happiness, value); }
+        }
+
+        // Wrapper for UserFood so we can notify changes to Quantity
+        public class UserFoodDisplay : ViewModelBase
+        {
+            public Food Food { get; set; }
+
+            private int _quantity;
+            public int Quantity { get => _quantity; set => SetProperty(ref _quantity, value); }
+
+            public UserFoodDisplay(Food food, int quantity)
+            {
+                Food = food;
+                Quantity = quantity;
+            }
+        }
+
+        // Properties bound from XAML
+        public PetDisplay CurrentPet { get; set; }
+
+        public ObservableCollection<UserFoodDisplay> UserFoods { get; } = new ObservableCollection<UserFoodDisplay>();
+
+        private UserFoodDisplay? _selectedFood;
+        public UserFoodDisplay? SelectedFood
+        {
+            get => _selectedFood;
+            set
+            {
+                if (SetProperty(ref _selectedFood, value))
+                {
+                    // Reset feeding quantity when selection changes
+                    FeedingQuantity = 1;
+                }
+            }
+        }
+
+        private int _feedingQuantity = 1;
+        public int FeedingQuantity
+        {
+            get => _feedingQuantity;
+            set
+            {
+                if (value < 1) value = 1;
+                if (SetProperty(ref _feedingQuantity, value)) { /* nothing else */ }
+            }
+        }
+
+        // Commands
+        public ICommand ChangePetCommand { get; }
+        public ICommand DecreaseQuantityCommand { get; }
+        public ICommand IncreaseQuantityCommand { get; }
+        public ICommand FeedPetCommand { get; }
+
+        public FeedingViewModel()
+        {
+            // Mock pet
+            CurrentPet = new PetDisplay
+            {
+                Avatar = "/Images/Pets/sample_pet.png",
+                Name = "Bunny",
+                Level = 1,
+                CurrentExp = 20,
+                MaxExp = 100,
+                Hunger = 60, // percent hungry
+                Happiness = 70
+            };
+
+            // Mock foods
+            UserFoods.Add(new UserFoodDisplay(new Food { Name = "Steak", Description = "Delicious meat", ImagePath = "/Images/Food/steak.png", ExperiencePerUnit = 15 }, 3));
+            UserFoods.Add(new UserFoodDisplay(new Food { Name = "Apple", Description = "Fresh apple", ImagePath = "/Images/Food/apple.png", ExperiencePerUnit = 5 }, 6));
+            UserFoods.Add(new UserFoodDisplay(new Food { Name = "Cake", Description = "Sweet cake", ImagePath = "/Images/Food/cake.png", ExperiencePerUnit = 30 }, 1));
+
+            // Commands
+            ChangePetCommand = new RelayCommand(_ => MessageBox.Show("Change pet clicked"));
+
+            DecreaseQuantityCommand = new RelayCommand(_ =>
+            {
+                if (FeedingQuantity > 1) FeedingQuantity--;
+            });
+
+            IncreaseQuantityCommand = new RelayCommand(_ =>
+            {
+                if (SelectedFood != null && FeedingQuantity < SelectedFood.Quantity)
+                    FeedingQuantity++;
+            });
+
+            FeedPetCommand = new RelayCommand(_ =>
+            {
+                if (SelectedFood == null)
+                {
+                    MessageBox.Show("Vui lòng chọn thức ăn trước khi cho thú cưng ăn.");
+                    return;
+                }
+
+                if (SelectedFood.Quantity <= 0)
+                {
+                    MessageBox.Show("Số lượng món này đã hết.");
+                    return;
+                }
+
+                int give = Math.Min(FeedingQuantity, SelectedFood.Quantity);
+                int expGain = give * SelectedFood.Food.ExperiencePerUnit;
+
+                // consume
+                SelectedFood.Quantity -= give;
+
+                // add exp and handle level up
+                CurrentPet.CurrentExp += expGain;
+                while (CurrentPet.CurrentExp >= CurrentPet.MaxExp)
+                {
+                    CurrentPet.CurrentExp -= CurrentPet.MaxExp;
+                    CurrentPet.Level++;
+                    CurrentPet.MaxExp = (int)(CurrentPet.MaxExp * 1.2) + 20; // increase requirement
+                }
+
+                // adjust hunger/happiness
+                CurrentPet.Hunger = Math.Max(0, CurrentPet.Hunger - (give * 15));
+                CurrentPet.Happiness = Math.Min(100, CurrentPet.Happiness + (give * 8));
+
+                // If current selected food became zero, try to select next available
+                if (SelectedFood.Quantity == 0)
+                {
+                    var next = FindFirstAvailableFood();
+                    SelectedFood = next;
+                }
+
+                MessageBox.Show($"Đã cho {CurrentPet.Name} ăn {give} x {SelectedFood?.Food.Name ?? "(đã hết)"}. +{expGain} EXP");
+            });
+
+            // default selection
+            SelectedFood = UserFoods.Count > 0 ? UserFoods[0] : null;
+        }
+
+        private UserFoodDisplay? FindFirstAvailableFood()
+        {
+            foreach (var f in UserFoods)
+            {
+                if (f.Quantity > 0) return f;
+            }
+            return null;
+        }
+    }
+}

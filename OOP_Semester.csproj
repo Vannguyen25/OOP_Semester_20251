@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Food\BimBim.png" />
+    <None Remove="Images\Food\Fish.png" />
+    <None Remove="Images\Food\Milk.png" />
+    <None Remove="Images\Food\Pate.png" />
+    <None Remove="Images\Pet\Cat\Cat_Level1.png" />
+    <None Remove="Images\Pet\Cat\Cat_Level2.png" />
+    <None Remove="Images\Pet\Cat\Cat_Level3.png" />
+    <None Remove="Images\Pet\Cat\Cat_Level4.png" />
+    <None Remove="Images\Pet\Cat\Cat_when_hungry.png" />
+    <None Remove="Images\Pet\Pitbull\PitBull_Level1.png" />
+    <None Remove="Images\Pet\Pitbull\PitBull_Level2.png" />
+    <None Remove="Images\Pet\Pitbull\PitBull_Level3.png" />
+    <None Remove="Images\Pet\Pitbull\PitBull_Level4.png" />
+    <None Remove="Images\Pet\Pitbull\Pitbull_when_hungry.png" />
+    <None Remove="Images\System\DefaultAvatar.png" />
+    <None Remove="Images\System\Logo.ico" />
+    <None Remove="Images\System\Logo.png" />
+    <None Remove="Images\System\Main_Pic_Login.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\UserAvatar\" />
+    <Folder Include="Views\Base\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Food\BimBim.png" />
+    <Resource Include="Images\Food\Fish.png" />
+    <Resource Include="Images\Food\Milk.png" />
+    <Resource Include="Images\Food\Pate.png" />
+    <Resource Include="Images\Pet\Cat\Cat_Level1.png" />
+    <Resource Include="Images\Pet\Cat\Cat_Level2.png" />
+    <Resource Include="Images\Pet\Cat\Cat_Level3.png" />
+    <Resource Include="Images\Pet\Cat\Cat_Level4.png" />
+    <Resource Include="Images\Pet\Cat\Cat_when_hungry.png" />
+    <Resource Include="Images\Pet\Pitbull\PitBull_Level1.png" />
+    <Resource Include="Images\Pet\Pitbull\PitBull_Level2.png" />
+    <Resource Include="Images\Pet\Pitbull\PitBull_Level3.png" />
+    <Resource Include="Images\Pet\Pitbull\PitBull_Level4.png" />
+    <Resource Include="Images\Pet\Pitbull\Pitbull_when_hungry.png" />
+    <Resource Include="Images\System\DefaultAvatar.png" />
+    <Resource Include="Images\System\Logo.ico" />
+    <Resource Include="Images\System\Logo.png" />
+    <Resource Include="Images\System\Main_Pic_Login.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ViewModels\NotifyViewModel.cs">
+      <Generator>MSBuild:Compile</Generator>
+    </Compile>
+  </ItemGroup>
+
+</Project>
