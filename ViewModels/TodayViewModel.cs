@@ -128,9 +128,13 @@ namespace OOP_Semester.ViewModels
             get
             {
                 if (CurrentPet?.PetType == null) return "/Images/Pet/default.png";
-                // Logic: Nếu đói (<30%) -> Ảnh đói, ngược lại -> Ảnh vui
-                string path = (HungerPercent < 30) ? CurrentPet.PetType.AppearanceWhenHungry : CurrentPet.PetType.AppearanceWhenHappy;
-                // Chuyển đổi đường dẫn cho phù hợp WPF (nếu cần)
+
+                // Logic hiển thị ảnh dựa trên Status vừa tính toán ở trên
+                // Nếu Status là Hungry (do Hunger > 50%) -> Lấy ảnh đói
+                string path = (CurrentPet.Status == "Hungry")
+                    ? CurrentPet.PetType.AppearanceWhenHungry
+                    : CurrentPet.PetType.AppearanceWhenHappy;
+
                 return path?.Replace("\\", "/") ?? "/Images/Pet/default.png";
             }
         }
@@ -301,9 +305,12 @@ namespace OOP_Semester.ViewModels
             }
         }
 
+        // ✅ LOGIC THÚ CƯNG (PET) - ĐÃ ĐỒNG BỘ VỚI FEEDING VIEW MODEL
         private void LoadPetStats()
         {
             using var context = new AppDbContext();
+
+            // 1. Lấy Pet Active và thông tin Level từ PetType
             var pet = context.Pets
                              .Include(p => p.PetType)
                              .FirstOrDefault(p => p.UserID == _user!.UserID && p.Status != "Inactive");
@@ -311,18 +318,38 @@ namespace OOP_Semester.ViewModels
             if (pet != null)
             {
                 CurrentPet = pet;
-                double hoursSinceFed = (DateTime.Now - (pet.LastFedDate ?? DateTime.Now.AddHours(-12))).TotalHours;
-                double maxHours = 12.0;
-                double hunger = 100 - ((hoursSinceFed / maxHours) * 100);
-                if (hunger < 0) hunger = 0; if (hunger > 100) hunger = 100;
-                HungerPercent = Math.Round(hunger);
 
-                if (HungerPercent > 70) HungerColor = "#22C55E";
-                else if (HungerPercent > 30) HungerColor = "#F97316";
-                else HungerColor = "#EF4444";
+                // 2. Lấy thông tin Level hiện tại để lấy đúng ảnh (Dựa trên FeedingViewModel)
+                // Lưu ý: Cần query lại PetType nếu EF Core chưa load đủ list level (hoặc giả định PetType đã include đủ)
+                // Ở đây ta truy vấn lại bảng PetTypes để lấy đúng dòng ứng với Level hiện tại của Pet
+                var currentLvlInfo = context.PetTypes
+                    .FirstOrDefault(pt => pt.PetTypeID == pet.PetTypeID && pt.Level == pet.Level);
 
-                HappinessPercent = (HungerPercent < 30) ? 30 : 100;
-                pet.Status = (HungerPercent < 30) ? "Hungry" : "Happy";
+                // 3. Tính toán Hunger/Happiness (Logic chuẩn: 1440 phút = 24h)
+                if (pet.LastFedDate.HasValue)
+                {
+                    double mins = (DateTime.Now - pet.LastFedDate.Value).TotalMinutes;
+                    // Công thức: (Số phút trôi qua / 1440) * 100 -> Max là 100
+                    HungerPercent = (int) Math.Min(100, (mins / 1440.0) * 100);
+                }
+                else
+                {
+                    HungerPercent = 100; // Chưa ăn bao giờ -> Đói meo
+                }
+
+                // Happiness ngược lại với Hunger
+                HappinessPercent = 100 - HungerPercent;
+
+                // 4. Đổi màu thanh chỉ số
+                if (HungerPercent > 70) HungerColor = "#EF4444"; // Đỏ (Rất đói)
+                else if (HungerPercent > 30) HungerColor = "#F97316"; // Cam (Hơi đói)
+                else HungerColor = "#22C55E"; // Xanh (No)
+
+                // 5. Cập nhật Status để Binding ảnh (Dùng logic > 50% là đói)
+                // Lưu ý: Cần cập nhật property Status của object Pet để View nhận diện
+                pet.Status = (HungerPercent > 50) ? "Hungry" : "Happy";
+
+                // 6. Kích hoạt cập nhật ảnh (Property CurrentPetImage sẽ tự tính toán lại dựa trên Status mới)
                 OnPropertyChanged(nameof(CurrentPetImage));
                 OnPropertyChanged(nameof(CurrentPetLevelStatus));
             }
@@ -333,7 +360,6 @@ namespace OOP_Semester.ViewModels
                 HappinessPercent = 0;
             }
         }
-
         // --- LOGIC THÓI QUEN (HABIT) ---
         private void LoadHabitsForDate(DateTime date)
         {

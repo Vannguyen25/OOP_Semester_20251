@@ -12,7 +12,7 @@ using System.Windows.Input;
 namespace OOP_Semester.ViewModels
 {
     // =========================================================================
-    // 1. CLASS PHỤ: SHOP ITEM (Giữ nguyên logic, chỉ thêm an toàn)
+    // 1. CLASS PHỤ: SHOP ITEM 
     // =========================================================================
     public class ShopItemViewModel : INotifyPropertyChanged
     {
@@ -75,7 +75,7 @@ namespace OOP_Semester.ViewModels
                     CommandManager.InvalidateRequerySuggested();
                 }
             }
-            catch { /* Bỏ qua lỗi nhỏ ở giao diện */ }
+            catch { }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -84,7 +84,7 @@ namespace OOP_Semester.ViewModels
     }
 
     // =========================================================================
-    // 2. CLASS CHÍNH: SHOP VIEW MODEL (Đã thêm Try-Catch hiển thị lỗi)
+    // 2. CLASS CHÍNH: SHOP VIEW MODEL
     // =========================================================================
     public class ShopViewModel : ViewModelBase
     {
@@ -95,7 +95,21 @@ namespace OOP_Semester.ViewModels
         public User CurrentUser
         {
             get => _currentUser;
-            set { _currentUser = value; OnPropertyChanged(); }
+            set { _currentUser = value; OnPropertyChanged(); OnPropertyChanged(nameof(UserGold)); }
+        }
+
+        // ⭐ QUAN TRỌNG: Property Wrapper để Binding số vàng lên View
+        public int UserGold
+        {
+            get => _currentUser?.GoldAmount ?? 0;
+            set
+            {
+                if (_currentUser != null && _currentUser.GoldAmount != value)
+                {
+                    _currentUser.GoldAmount = value;
+                    OnPropertyChanged(); // Báo cho View biết UserGold đã đổi
+                }
+            }
         }
 
         private Pet _currentPet;
@@ -114,45 +128,23 @@ namespace OOP_Semester.ViewModels
 
         public ObservableCollection<ShopItemViewModel> Products { get; set; }
 
-        // --- CONSTRUCTOR (Nơi dễ gây crash nhất) ---
         public ShopViewModel(User user)
         {
-            // [DEBUG] Bắt lỗi ngay khi khởi tạo
             try
             {
-                // 1. Kiểm tra User đầu vào
-                if (user == null)
-                {
-                    throw new Exception("Lỗi: Dữ liệu User truyền vào Shop bị NULL. Vui lòng kiểm tra lại quá trình Đăng nhập hoặc Chuyển trang.");
-                }
+                if (user == null) throw new Exception("User data is null.");
 
                 _currentUser = user;
                 Products = new ObservableCollection<ShopItemViewModel>();
 
-                // 2. Thử kết nối Database
-                try
-                {
-                    _context = new AppDbContext();
-                    // Thử truy vấn nhẹ để xem DB có sống không
-                    bool dbExists = _context.Database.CanConnect();
-                    if (!dbExists) throw new Exception("Không thể kết nối đến Database MySQL.");
-                }
-                catch (Exception dbEx)
-                {
-                    throw new Exception($"Lỗi kết nối Database: {dbEx.Message}. Hãy kiểm tra ConnectionString trong AppDbContext.");
-                }
+                _context = new AppDbContext();
+                if (!_context.Database.CanConnect()) throw new Exception("Cannot connect to Database.");
 
-                // 3. Load dữ liệu
                 LoadData();
             }
             catch (Exception ex)
             {
-                // Hiện MessageBox thay vì tắt ứng dụng
-                MessageBox.Show(
-                    $"Đã xảy ra lỗi nghiêm trọng khi mở Cửa hàng:\n\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}",
-                    "Lỗi Khởi Tạo Shop",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"Error initializing Shop: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -160,56 +152,38 @@ namespace OOP_Semester.ViewModels
         {
             try
             {
-                // 1. Load Pet
+                // 1. Load Pet Info
                 CurrentPet = _context.Pets.FirstOrDefault(p => p.UserID == _currentUser.UserID);
-
                 if (CurrentPet != null)
                 {
-                    var nextLevel = _context.PetTypes
-                        .FirstOrDefault(pt => pt.PetTypeID == CurrentPet.PetTypeID && pt.Level == CurrentPet.Level + 1);
+                    var nextLevel = _context.PetTypes.FirstOrDefault(pt => pt.PetTypeID == CurrentPet.PetTypeID && pt.Level == CurrentPet.Level + 1);
                     MaxExp = nextLevel?.ExperienceRequired ?? (CurrentPet.Experience > 0 ? CurrentPet.Experience : 100);
                 }
-                else
-                {
-                    // Cảnh báo nhẹ nếu không thấy Pet
-                    // MessageBox.Show("User này chưa có Pet nào. Một số chức năng hiển thị Level sẽ bị ẩn.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
 
-                // 2. Load Foods
-                // [DEBUG] Kiểm tra xem bảng Food có dữ liệu không
+                // 2. Load Products
                 var foods = _context.Foods.ToList();
-
-                if (foods == null || foods.Count == 0)
-                {
-                    MessageBox.Show("Cảnh báo: Bảng 'food' trong Database đang trống hoặc không tồn tại. Cửa hàng sẽ không có gì để bán.", "Thiếu dữ liệu", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-
                 Products.Clear();
                 foreach (var food in foods)
                 {
-                    var itemVm = new ShopItemViewModel(food, ExecuteBuy);
-                    Products.Add(itemVm);
+                    Products.Add(new ShopItemViewModel(food, ExecuteBuy));
                 }
 
                 RefreshAffordability();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Lỗi khi tải dữ liệu sản phẩm:\n{ex.Message}\n\nChi tiết: {ex.InnerException?.Message}",
-                    "Lỗi Data",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void ExecuteBuy(ShopItemViewModel item)
         {
-            // Bọc try-catch cho hành động mua
             try
             {
                 int totalCost = item.TotalPrice;
-                int currentGold = _currentUser.GoldAmount ?? 0;
+
+                // ⭐ Dùng Wrapper Property
+                int currentGold = UserGold;
 
                 if (currentGold < totalCost)
                 {
@@ -217,10 +191,11 @@ namespace OOP_Semester.ViewModels
                     return;
                 }
 
-                _currentUser.GoldAmount = currentGold - totalCost;
+                // ⭐ Trừ tiền thông qua Wrapper Property -> Tự động cập nhật View
+                UserGold = currentGold - totalCost;
 
-                var userFood = _context.UserFoods
-                    .FirstOrDefault(uf => uf.UserID == _currentUser.UserID && uf.FoodID == item.FoodID);
+                // --- Xử lý DB ---
+                var userFood = _context.UserFoods.FirstOrDefault(uf => uf.UserID == _currentUser.UserID && uf.FoodID == item.FoodID);
 
                 if (userFood != null)
                 {
@@ -229,26 +204,24 @@ namespace OOP_Semester.ViewModels
                 }
                 else
                 {
-                    var newInv = new UserFood
+                    _context.UserFoods.Add(new UserFood
                     {
                         UserID = _currentUser.UserID,
                         FoodID = item.FoodID,
                         Quantity = item.QuantityToBuy
-                    };
-                    _context.UserFoods.Add(newInv);
+                    });
                 }
 
-                var trans = new GoldTransaction
+                _context.GoldTransactions.Add(new GoldTransaction
                 {
                     UserID = _currentUser.UserID,
                     Amount = -totalCost
-                };
-                _context.GoldTransactions.Add(trans);
+                });
 
                 _context.Users.Update(_currentUser);
                 _context.SaveChanges();
 
-                OnPropertyChanged(nameof(CurrentUser));
+                // Reset UI
                 item.QuantityToBuy = 1;
                 RefreshAffordability();
 
@@ -257,14 +230,9 @@ namespace OOP_Semester.ViewModels
             }
             catch (Exception ex)
             {
-                // Reload lại User nếu lỗi để tránh sai lệch tiền hiển thị
-                try { _context.Entry(_currentUser).Reload(); OnPropertyChanged(nameof(CurrentUser)); } catch { }
-
-                MessageBox.Show(
-                    $"Lỗi giao dịch mua hàng:\n{ex.Message}\n\nInner Exception: {ex.InnerException?.Message}",
-                    "Lỗi Giao Dịch",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                // Rollback UI nếu lỗi
+                try { _context.Entry(_currentUser).Reload(); OnPropertyChanged(nameof(UserGold)); } catch { }
+                MessageBox.Show($"Lỗi giao dịch: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -272,20 +240,13 @@ namespace OOP_Semester.ViewModels
         {
             try
             {
-                int gold = _currentUser.GoldAmount ?? 0;
+                int gold = UserGold; // Lấy từ Wrapper
                 foreach (var prod in Products)
                 {
                     prod.UpdateAffordability(gold);
                 }
             }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Lỗi refresh giá: " + ex.Message);
-            }
+            catch { }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

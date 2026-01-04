@@ -175,7 +175,7 @@
                         </Border>
                         <StackPanel VerticalAlignment="Center">
                             <TextBlock Text="Vàng hiện có" FontSize="14" Foreground="{StaticResource TextGray}" FontWeight="SemiBold"/>
-                            <TextBlock Text="{Binding CurrentUser.GoldAmount, StringFormat={}{0:N0}}" FontSize="32" FontWeight="Black" Foreground="{StaticResource TextMain}" Margin="0,4,0,0"/>
+                            <TextBlock Text="{Binding UserGold}" FontSize="32" FontWeight="Black" Foreground="{StaticResource TextMain}" Margin="0,4,0,0"/>
                         </StackPanel>
                     </DockPanel>
                 </Border>

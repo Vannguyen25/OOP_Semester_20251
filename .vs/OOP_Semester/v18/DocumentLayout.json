@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "D:\\OOP\\OOP_Semester\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\habitview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\habitview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\todayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\todayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\feedingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\feedingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\feedingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\feedingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\shopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\shopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\habitview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\habitview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\habit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\habitmonthwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\habitmonthwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\habitlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\settingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\settingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\shopviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\shopviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\statisticviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -107,10 +115,6 @@
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\authview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\feedingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\feedingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\settingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\settingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -141,10 +145,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\shopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\shopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\settingview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -218,54 +218,69 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FeedingView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\FeedingView.xaml",
+              "RelativeDocumentMoniker": "Views\\FeedingView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\FeedingView.xaml",
+              "RelativeToolTip": "Views\\FeedingView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-04T00:24:50.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "ShopView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml",
+              "RelativeDocumentMoniker": "Views\\ShopView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml",
+              "RelativeToolTip": "Views\\ShopView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-02T03:18:38.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FeedingViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\FeedingViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\FeedingViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\FeedingViewModel.cs",
+              "RelativeToolTip": "ViewModels\\FeedingViewModel.cs",
+              "ViewState": "AgIAAB0BAAAAAAAAAAAwwDQBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-01T09:48:26.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "TodayViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\TodayViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\TodayViewModel.cs",
               "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\TodayViewModel.cs",
               "RelativeToolTip": "ViewModels\\TodayViewModel.cs",
-              "ViewState": "AgIAAE8BAAAAAAAAAAAmwF0BAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAEUBAAAAAAAAAAAowEwBAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T16:12:39.28Z"
+              "WhenOpened": "2026-01-03T16:12:39.28Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HabitLog.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\HabitLog.cs",
-              "RelativeDocumentMoniker": "Models\\HabitLog.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\HabitLog.cs",
-              "RelativeToolTip": "Models\\HabitLog.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwB4AAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T14:50:05.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Habit.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Habit.cs",
-              "RelativeDocumentMoniker": "Models\\Habit.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Habit.cs",
-              "RelativeToolTip": "Models\\Habit.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T14:17:00.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "TodayView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml",
               "RelativeDocumentMoniker": "Views\\TodayView.xaml",
               "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml",
               "RelativeToolTip": "Views\\TodayView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-03T14:18:56.496Z"
+              "WhenOpened": "2026-01-03T14:18:56.496Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "HabitView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitView.xaml",
               "RelativeDocumentMoniker": "Views\\HabitView.xaml",
@@ -277,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "HabitMonthWindowViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitMonthWindowViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\HabitMonthWindowViewModel.cs",
@@ -290,6 +305,30 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Habit.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Habit.cs",
+              "RelativeDocumentMoniker": "Models\\Habit.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Habit.cs",
+              "RelativeToolTip": "Models\\Habit.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:17:00.33Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HabitLog.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\HabitLog.cs",
+              "RelativeDocumentMoniker": "Models\\HabitLog.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\HabitLog.cs",
+              "RelativeToolTip": "Models\\HabitLog.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAiwB4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-03T14:50:05.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "HabitReminder.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\HabitReminder.cs",
               "RelativeDocumentMoniker": "Models\\HabitReminder.cs",
@@ -301,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "HabitViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\HabitViewModel.cs",
@@ -313,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "HomeViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HomeViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\HomeViewModel.cs",
@@ -325,7 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "MainViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
@@ -337,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "SettingViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\SettingViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\SettingViewModel.cs",
@@ -349,19 +388,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ShopViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\ShopViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\ShopViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\ShopViewModel.cs",
-              "RelativeToolTip": "ViewModels\\ShopViewModel.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAYwGwAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T03:19:22.151Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "StatisticViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\StatisticViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\StatisticViewModel.cs",
@@ -373,7 +400,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "App.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -385,7 +412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "HomeView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HomeView.xaml",
               "RelativeDocumentMoniker": "Views\\HomeView.xaml",
@@ -396,7 +423,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "HabitView.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\HabitView.xaml.cs",
@@ -408,7 +435,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
@@ -420,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "NotifyViewModel.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\NotifyViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\NotifyViewModel.cs",
@@ -432,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "BooleanToVisibilityConverter.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Converters\\BooleanToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
@@ -444,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "OOP_Semester.csproj",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\OOP_Semester.csproj",
               "RelativeDocumentMoniker": "OOP_Semester.csproj",
@@ -456,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "HabitMonthWindow.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitMonthWindow.xaml.cs",
               "RelativeDocumentMoniker": "Views\\HabitMonthWindow.xaml.cs",
@@ -468,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "HabitMonthWindow.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitMonthWindow.xaml",
               "RelativeDocumentMoniker": "Views\\HabitMonthWindow.xaml",
@@ -479,7 +506,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "StatisticView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\StatisticView.xaml",
               "RelativeDocumentMoniker": "Views\\StatisticView.xaml",
@@ -490,7 +517,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "TodayView.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\TodayView.xaml.cs",
@@ -502,19 +529,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "FeedingViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\FeedingViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\FeedingViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\FeedingViewModel.cs",
-              "RelativeToolTip": "ViewModels\\FeedingViewModel.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAIAwwFcAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T09:48:26.367Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "AuthView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\AuthView.xaml",
               "RelativeDocumentMoniker": "Views\\AuthView.xaml",
@@ -525,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "NotifyView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\NotifyView.xaml",
               "RelativeDocumentMoniker": "Views\\NotifyView.xaml",
@@ -536,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "SettingView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\SettingView.xaml",
               "RelativeDocumentMoniker": "Views\\SettingView.xaml",
@@ -547,7 +562,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "NotifyView.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\NotifyView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\NotifyView.xaml.cs",
@@ -559,7 +574,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "PetType.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\PetType.cs",
               "RelativeDocumentMoniker": "Models\\PetType.cs",
@@ -571,7 +586,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "Notify.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Notify.cs",
               "RelativeDocumentMoniker": "Models\\Notify.cs",
@@ -583,7 +598,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "ShopView.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\ShopView.xaml.cs",
@@ -595,7 +610,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "StatisticView.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\StatisticView.xaml.cs",
               "RelativeDocumentMoniker": "Views\\StatisticView.xaml.cs",
@@ -607,7 +622,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "ViewModelBase.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\ViewModelBase.cs",
               "RelativeDocumentMoniker": "ViewModels\\Base\\ViewModelBase.cs",
@@ -619,7 +634,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -628,17 +643,6 @@
               "ViewState": "AgIAABQAAAAAAAAAAAAIwCkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-02T04:05:44.044Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "ShopView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml",
-              "RelativeDocumentMoniker": "Views\\ShopView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml",
-              "RelativeToolTip": "Views\\ShopView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-02T03:18:38.467Z"
             },
             {
               "$type": "Document",
