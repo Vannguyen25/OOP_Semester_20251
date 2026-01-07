@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using YourNamespace.Models;
 
 namespace OOP_Semester.ViewModels
 {
@@ -13,7 +14,7 @@ namespace OOP_Semester.ViewModels
     {
         private readonly User _user;
 
-        // --- 1. THÔNG TIN THÚ CƯNG (Binding từ DB) ---
+        // --- 1. THÔNG TIN THÚ CƯNG ---
         private string _currentPetImage;
         public string CurrentPetImage { get => _currentPetImage; set => SetProperty(ref _currentPetImage, value); }
 
@@ -27,9 +28,10 @@ namespace OOP_Semester.ViewModels
         public int PetXpMax { get => _petXpMax; set => SetProperty(ref _petXpMax, value); }
 
         // --- 2. FORM NHẬP LIỆU ---
-        public string HabitName { get; set; } = "";
+        private string _habitName = "";
+        public string HabitName { get => _habitName; set => SetProperty(ref _habitName, value); }
 
-        // Icon Picker (Emoji)
+        // Icon Picker
         public ObservableCollection<string> IconList { get; } = new ObservableCollection<string>
         {
             "🏃", "💧", "📖", "🧘", "💰", "🎸", "💊", "🥗",
@@ -54,15 +56,16 @@ namespace OOP_Semester.ViewModels
             get => _isDailyGoal;
             set { if (SetProperty(ref _isDailyGoal, value)) OnPropertyChanged(nameof(IsTotalGoal)); }
         }
-        public bool IsTotalGoal
-        {
-            get => !_isDailyGoal;
-            set => IsDailyGoal = !value;
-        }
+        public bool IsTotalGoal { get => !_isDailyGoal; set => IsDailyGoal = !value; }
 
-        public string DailyGoalValue { get; set; } = "1";
-        public string TotalGoalValue { get; set; } = "";
-        public string Unit { get; set; } = "Lần";
+        private string _dailyGoalValue = "1";
+        public string DailyGoalValue { get => _dailyGoalValue; set => SetProperty(ref _dailyGoalValue, value); }
+
+        private string _totalGoalValue = "";
+        public string TotalGoalValue { get => _totalGoalValue; set => SetProperty(ref _totalGoalValue, value); }
+
+        private string _unit = "Lần";
+        public string Unit { get => _unit; set => SetProperty(ref _unit, value); }
 
         // --- 4. NGÀY THÁNG & LẶP LẠI ---
         public DateTime StartDate { get; set; } = DateTime.Today;
@@ -81,13 +84,15 @@ namespace OOP_Semester.ViewModels
                 }
             }
         }
-        public bool Mon { get; set; } = true;
-        public bool Tue { get; set; } = true;
-        public bool Wed { get; set; } = true;
-        public bool Thu { get; set; } = true;
-        public bool Fri { get; set; } = true;
-        public bool Sat { get; set; } = true;
-        public bool Sun { get; set; } = true;
+
+        // Các biến ngày trong tuần cần raise PropertyChanged để UI cập nhật khi IsEveryday thay đổi
+        private bool _mon = true; public bool Mon { get => _mon; set => SetProperty(ref _mon, value); }
+        private bool _tue = true; public bool Tue { get => _tue; set => SetProperty(ref _tue, value); }
+        private bool _wed = true; public bool Wed { get => _wed; set => SetProperty(ref _wed, value); }
+        private bool _thu = true; public bool Thu { get => _thu; set => SetProperty(ref _thu, value); }
+        private bool _fri = true; public bool Fri { get => _fri; set => SetProperty(ref _fri, value); }
+        private bool _sat = true; public bool Sat { get => _sat; set => SetProperty(ref _sat, value); }
+        private bool _sun = true; public bool Sun { get => _sun; set => SetProperty(ref _sun, value); }
 
         private void NotifyDaysChanged()
         {
@@ -96,7 +101,7 @@ namespace OOP_Semester.ViewModels
             OnPropertyChanged(nameof(Fri)); OnPropertyChanged(nameof(Sat)); OnPropertyChanged(nameof(Sun));
         }
 
-        // --- 5. NHẮC NHỞ (2 CHẾ ĐỘ) ---
+        // --- 5. NHẮC NHỞ ---
         private bool _isReminderBySession = true;
         public bool IsReminderBySession
         {
@@ -109,18 +114,20 @@ namespace OOP_Semester.ViewModels
         public bool RemindAfternoon { get; set; }
         public bool RemindEvening { get; set; }
 
-        // Hiển thị giờ user cài đặt lên nút bấm
         public string MorningLabel => _user.MorningTime.HasValue ? $"Sáng ({_user.MorningTime:hh\\:mm})" : "Sáng";
         public string AfternoonLabel => _user.AfternoonTime.HasValue ? $"Chiều ({_user.AfternoonTime:hh\\:mm})" : "Chiều";
         public string EveningLabel => _user.EveningTime.HasValue ? $"Tối ({_user.EveningTime:hh\\:mm})" : "Tối";
 
         public ObservableCollection<string> ReminderTimes { get; set; } = new ObservableCollection<string>();
-        public string ReminderInput { get; set; } = "";
 
-        // --- 6. ĐỘ KHÓ (XP) ---
-        public bool IsEasy { get; set; } = true;
-        public bool IsMedium { get; set; }
-        public bool IsHard { get; set; }
+        private string _reminderInput = "";
+        public string ReminderInput { get => _reminderInput; set => SetProperty(ref _reminderInput, value); }
+
+        // --- 6. TEMPLATE SUPPORT (MỚI) ---
+        public ObservableCollection<HabitTemplate> Templates { get; set; } = new ObservableCollection<HabitTemplate>();
+
+        private bool _isTemplatePopupVisible;
+        public bool IsTemplatePopupVisible { get => _isTemplatePopupVisible; set => SetProperty(ref _isTemplatePopupVisible, value); }
 
         // --- COMMANDS ---
         public ICommand PickColorCommand { get; }
@@ -128,6 +135,11 @@ namespace OOP_Semester.ViewModels
         public ICommand RemoveReminderCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
+
+        // Template Commands
+        public ICommand OpenTemplateLibraryCommand { get; }
+        public ICommand CloseTemplateLibraryCommand { get; }
+        public ICommand ApplyTemplateCommand { get; }
 
         // --- CONSTRUCTOR ---
         public HabitViewModel(User user)
@@ -137,107 +149,125 @@ namespace OOP_Semester.ViewModels
 
             PickColorCommand = new RelayCommand(c => { if (c is string h) SelectedColorHex = h; });
 
-            // Sửa dòng này: đổi "_" thành "obj"
             AddReminderCommand = new RelayCommand(obj =>
             {
                 if (!string.IsNullOrWhiteSpace(ReminderInput) && !ReminderTimes.Contains(ReminderInput))
                 {
-                    // Bây giờ "out _" sẽ được hiểu đúng là discard (bỏ qua kết quả out)
                     if (TimeSpan.TryParse(ReminderInput, out _))
                     {
                         ReminderTimes.Add(ReminderInput);
                         ReminderInput = "";
-                        OnPropertyChanged(nameof(ReminderInput));
                     }
-                    else
-                    {
-                        MessageBox.Show("Định dạng giờ không hợp lệ (HH:mm)");
-                    }
+                    else MessageBox.Show("Định dạng giờ không hợp lệ (HH:mm)");
                 }
             });
 
             RemoveReminderCommand = new RelayCommand(item => { if (item is string time) ReminderTimes.Remove(time); });
-
             SaveCommand = new RelayCommand(_ => SaveHabit());
+            CancelCommand = new RelayCommand(_ => { /* Logic đóng window */ });
 
-            // CancelCommand: Logic đóng window/view tùy cấu trúc navigation của bạn
-            CancelCommand = new RelayCommand(_ => { /* Code đóng view */ });
+            // --- Template Logic ---
+            OpenTemplateLibraryCommand = new RelayCommand(_ => LoadAndOpenTemplates());
+            CloseTemplateLibraryCommand = new RelayCommand(_ => IsTemplatePopupVisible = false);
+            ApplyTemplateCommand = new RelayCommand(obj =>
+            {
+                if (obj is HabitTemplate template)
+                {
+                    ApplyTemplateToForm(template);
+                    IsTemplatePopupVisible = false;
+                }
+            });
         }
 
         private void LoadPetInfo()
         {
-            using var context = new AppDbContext();
-            var pet = context.Pets.Include("PetType").FirstOrDefault(p => p.UserID == _user.UserID && p.Status != "Inactive");
-            if (pet != null)
+            try
             {
+                using var context = new AppDbContext();
+                var pet = context.Pets.Include("PetType").FirstOrDefault(p => p.UserID == _user.UserID && p.Status != "Inactive");
+
                 PetLevel = pet.Level;
                 PetXp = pet.Experience;
-                PetXpMax = pet.PetType.ExperienceRequired;
-
                 double hours = (DateTime.Now - (pet.LastFedDate ?? DateTime.Now)).TotalHours;
-                bool isHungry = hours > 8;
-                string path = isHungry ? pet.PetType.AppearanceWhenHungry : pet.PetType.AppearanceWhenHappy;
-                CurrentPetImage = path?.Replace("\\", "/") ?? "/Images/Pet/default.png";
+                // bool isHungry = hours > 8;
+                string path = pet.PetType.AppearanceWhenHappy;
+                CurrentPetImage = path?.Replace("\\", "/");
+                
             }
-            else CurrentPetImage = "/Images/Pet/default.png";
+            catch { CurrentPetImage = "/Images/Pet/Pitbull_Level1.png"; }
         }
 
-        // ==========================================================
-        // 🔥 XỬ LÝ LƯU THÓI QUEN (LOGIC CHÍNH)
-        // ==========================================================
+        // --- TEMPLATE METHODS ---
+        private void LoadAndOpenTemplates()
+        {
+            try
+            {
+                using var context = new AppDbContext();
+                var list = context.HabitTemplates.Where(t => t.IsActive).OrderBy(t => t.SortOrder).ToList();
+                Templates.Clear();
+                foreach (var item in list) Templates.Add(item);
+                IsTemplatePopupVisible = true;
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi tải template: " + ex.Message); }
+        }
+
+        private void ApplyTemplateToForm(HabitTemplate t)
+        {
+            HabitName = t.Name;
+            if (!string.IsNullOrEmpty(t.IconCode)) SelectedIcon = t.IconCode;
+            if (!string.IsNullOrEmpty(t.ColorHex)) SelectedColorHex = t.ColorHex;
+
+            Unit = t.DefaultGoalUnitName;
+
+            if (t.DefaultGoalUnitType == "Count" || t.DefaultGoalUnitType == "Time")
+            {
+                IsDailyGoal = true;
+                DailyGoalValue = t.DefaultGoalValuePerDay.ToString("0.##"); // Format bỏ số 0 thừa
+            }
+            else // Checkbox
+            {
+                IsDailyGoal = true;
+                DailyGoalValue = "1";
+            }
+
+            // Reset về mặc định
+            IsEveryday = true;
+        }
+
+        // --- SAVE LOGIC (GIỮ NGUYÊN) ---
         private void SaveHabit()
         {
-            // 1. VALIDATION
-            if (string.IsNullOrWhiteSpace(HabitName))
-            {
-                MessageBox.Show("Vui lòng nhập tên thói quen!");
-                return;
-            }
+            if (string.IsNullOrWhiteSpace(HabitName)) { MessageBox.Show("Vui lòng nhập tên thói quen!"); return; }
 
             decimal goalValue = 0;
             if (IsDailyGoal)
             {
-                if (!decimal.TryParse(DailyGoalValue, out goalValue) || goalValue <= 0)
-                {
-                    MessageBox.Show("Mục tiêu mỗi ngày phải là số > 0!"); return;
-                }
+                if (!decimal.TryParse(DailyGoalValue, out goalValue) || goalValue <= 0) { MessageBox.Show("Mục tiêu mỗi ngày phải là số > 0!"); return; }
             }
             else
             {
-                if (!decimal.TryParse(TotalGoalValue, out goalValue) || goalValue <= 0)
-                {
-                    MessageBox.Show("Mục tiêu tổng cộng phải là số > 0!"); return;
-                }
+                if (!decimal.TryParse(TotalGoalValue, out goalValue) || goalValue <= 0) { MessageBox.Show("Mục tiêu tổng cộng phải là số > 0!"); return; }
             }
 
-            if (EndDate.HasValue && EndDate < StartDate)
-            {
-                MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu!"); return;
-            }
+            if (EndDate.HasValue && EndDate < StartDate) { MessageBox.Show("Ngày kết thúc không được nhỏ hơn ngày bắt đầu!"); return; }
 
             try
             {
                 using var context = new AppDbContext();
-
-                // 2. KHỞI TẠO HABIT
                 var habit = new Habit
                 {
                     UserID = _user.UserID,
                     Name = HabitName,
                     Icon = SelectedIcon,
                     ColorHex = SelectedColorHex,
-
                     UseGoal = true,
                     GoalUnitType = Unit,
                     GoalValuePerDay = IsDailyGoal ? goalValue : (decimal?)null,
                     TargetTotalAmount = IsTotalGoal ? goalValue : (decimal?)null,
-
                     StartDate = StartDate,
                     EndDate = EndDate,
                     UseEndCondition = EndDate.HasValue,
                     RepeatEveryday = IsEveryday,
-
-                    // Giá trị khởi tạo
                     CurrentStreak = 0,
                     BestStreak = 0,
                     Status = "Active",
@@ -245,124 +275,60 @@ namespace OOP_Semester.ViewModels
                 };
 
                 context.Habits.Add(habit);
-                context.SaveChanges(); // -> Có HabitID
+                context.SaveChanges();
 
-                // 3. LƯU REPEAT DAYS (Nếu không phải mỗi ngày)
                 if (!IsEveryday)
                 {
-                    var repeat = new RepeatDay
-                    {
-                        HabitID = habit.HabitID,
-                        Mon = Mon,
-                        Tue = Tue,
-                        Wed = Wed,
-                        Thu = Thu,
-                        Fri = Fri,
-                        Sat = Sat,
-                        Sun = Sun
-                    };
-                    context.RepeatDays.Add(repeat);
+                    context.RepeatDays.Add(new RepeatDay { HabitID = habit.HabitID, Mon = Mon, Tue = Tue, Wed = Wed, Thu = Thu, Fri = Fri, Sat = Sat, Sun = Sun });
                 }
 
-                // 4. KHỞI TẠO HABIT LOG (Nếu hôm nay cần làm)
                 if (StartDate.Date <= DateTime.Today)
                 {
                     bool isScheduledToday = IsEveryday;
                     if (!isScheduledToday)
                     {
                         var today = DateTime.Today.DayOfWeek;
-                        isScheduledToday = today switch
-                        {
-                            DayOfWeek.Monday => Mon,
-                            DayOfWeek.Tuesday => Tue,
-                            DayOfWeek.Wednesday => Wed,
-                            DayOfWeek.Thursday => Thu,
-                            DayOfWeek.Friday => Fri,
-                            DayOfWeek.Saturday => Sat,
-                            DayOfWeek.Sunday => Sun,
-                            _ => false
-                        };
+                        isScheduledToday = today switch { DayOfWeek.Monday => Mon, DayOfWeek.Tuesday => Tue, DayOfWeek.Wednesday => Wed, DayOfWeek.Thursday => Thu, DayOfWeek.Friday => Fri, DayOfWeek.Saturday => Sat, DayOfWeek.Sunday => Sun, _ => false };
                     }
-
                     if (isScheduledToday)
                     {
-                        context.HabitLogs.Add(new HabitLog
-                        {
-                            HabitID = habit.HabitID,
-                            LogDate = DateTime.Today,
-                            Quantity = 0,
-                            Completed = false,
-                            Skipped = false,
-                            TimeOfDay = GetTimeOfDayFromNow()
-                        });
+                        context.HabitLogs.Add(new HabitLog { HabitID = habit.HabitID, LogDate = DateTime.Today, Quantity = 0, Completed = false, Skipped = false, TimeOfDay = GetTimeOfDayFromNow() });
                     }
                 }
 
-                // 5. XỬ LÝ NHẮC NHỞ & MESSENGER (Random Message)
-                // Lấy danh sách ID tin nhắn có sẵn
+                // Reminder Logic
                 var allMesIds = context.Messengers.Select(m => m.MesID).ToList();
                 Random rand = new Random();
 
-                // Hàm local để thêm Reminder + Messenger
                 void AddReminderWithRandomMsg(TimeSpan time, string type)
                 {
-                    // a. Lưu Reminder
-                    context.HabitReminders.Add(new HabitReminder
-                    {
-                        HabitID = habit.HabitID,
-                        UserID = _user.UserID,
-                        ReminderTime = time,
-                        ReminderType = type,
-                        IsActive = true,
-                        CreatedAt = DateTime.Now
-                    });
-
-                    // b. Lưu Messenger (Nếu có tin nhắn trong DB)
+                    context.HabitReminders.Add(new HabitReminder { HabitID = habit.HabitID, UserID = _user.UserID, ReminderTime = time, ReminderType = type, IsActive = true, CreatedAt = DateTime.Now });
                     if (allMesIds.Count > 0)
                     {
-                        int randomMesId = allMesIds[rand.Next(allMesIds.Count)];
-
-                        // Đảm bảo bạn đã có DbSet<HabitMessenger> trong AppDbContext
-                        context.HabitMessengers.Add(new HabitMessenger
-                        {
-                            HabitID = habit.HabitID,
-                            MesID = randomMesId,
-                            ReminderTime = time // Cần khớp với giờ nhắc
-                        });
+                        context.HabitMessengers.Add(new HabitMessenger { HabitID = habit.HabitID, MesID = allMesIds[rand.Next(allMesIds.Count)], ReminderTime = time });
                     }
                 }
 
                 if (IsReminderBySession)
                 {
-                    // Lấy giờ user setting mới nhất
                     var currentUser = context.Users.Find(_user.UserID);
                     if (currentUser != null)
                     {
-                        if (RemindMorning && currentUser.MorningTime.HasValue)
-                            AddReminderWithRandomMsg(currentUser.MorningTime.Value, "Morning");
-
-                        if (RemindAfternoon && currentUser.AfternoonTime.HasValue)
-                            AddReminderWithRandomMsg(currentUser.AfternoonTime.Value, "Afternoon");
-
-                        if (RemindEvening && currentUser.EveningTime.HasValue)
-                            AddReminderWithRandomMsg(currentUser.EveningTime.Value, "Evening");
+                        if (RemindMorning && currentUser.MorningTime.HasValue) AddReminderWithRandomMsg(currentUser.MorningTime.Value, "Morning");
+                        if (RemindAfternoon && currentUser.AfternoonTime.HasValue) AddReminderWithRandomMsg(currentUser.AfternoonTime.Value, "Afternoon");
+                        if (RemindEvening && currentUser.EveningTime.HasValue) AddReminderWithRandomMsg(currentUser.EveningTime.Value, "Evening");
                     }
                 }
-                else // Theo giờ cụ thể
+                else
                 {
                     foreach (var timeStr in ReminderTimes)
                     {
-                        if (TimeSpan.TryParse(timeStr, out var ts))
-                        {
-                            AddReminderWithRandomMsg(ts, "Specific");
-                        }
+                        if (TimeSpan.TryParse(timeStr, out var ts)) AddReminderWithRandomMsg(ts, "Specific");
                     }
                 }
 
                 context.SaveChanges();
                 MessageBox.Show("Thêm thói quen thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Clear Form hoặc đóng window ở đây nếu cần
             }
             catch (Exception ex)
             {

@@ -4,9 +4,95 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:OOP_Semester.Views"
+             xmlns:reportView="clr-namespace:OOP_Semester.Views.Report"
+             xmlns:reportVM="clr-namespace:OOP_Semester.ViewModels.Report"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <DataTemplate DataType="{x:Type reportVM:DailyReportViewModel}">
+            <reportView:DailyReportView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type reportVM:AdChallengeReportViewModel}">
+            <reportView:AdChallengeReportView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type reportVM:AdUserReportViewModel}">
+            <reportView:AdUserReportView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type reportVM:GoldTransactionReportViewModel}">
+            <reportView:GoldTransactionReportView/>
+        </DataTemplate>
+
+
+        <Style x:Key="NavBoxStyle" TargetType="RadioButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+            <Setter Property="Width" Value="180"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="bd" Background="White" CornerRadius="12" BorderThickness="2" BorderBrush="#E5E7EB">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="bd" Property="BorderBrush" Value="#EE7C2B"/>
+                                <Setter TargetName="bd" Property="Background" Value="#FFF7ED"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#F9FAFB">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="744" Height="59" VerticalAlignment="Top" Grid.RowSpan="2">
+
+            <RadioButton Style="{StaticResource NavBoxStyle}" Command="{Binding SwitchReportCommand}" CommandParameter="Daily" IsChecked="True" Height="35" Width="101">
+                <StackPanel Height="35" Width="80">
+                    <TextBlock Text="📊" FontSize="10" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Báo cáo Ngày" FontWeight="Bold"/>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource NavBoxStyle}" Command="{Binding SwitchReportCommand}" CommandParameter="Gold" Height="35" Width="105">
+                <StackPanel>
+                    <TextBlock Text="💰" FontSize="10" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Giao dịch Vàng" FontWeight="Bold"/>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource NavBoxStyle}" 
+                 Command="{Binding SwitchReportCommand}" 
+                 CommandParameter="ChallengeAdmin" 
+                 Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}"
+                 Height="35" Width="105">
+                <StackPanel>
+                    <TextBlock Text="🏆" FontSize="10" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Báo cáo Thử thách" FontWeight="Bold" FontSize="10"/>
+                </StackPanel>
+            </RadioButton>
+
+            <RadioButton Style="{StaticResource NavBoxStyle}" 
+                 Command="{Binding SwitchReportCommand}" 
+                 CommandParameter="UserAdmin" 
+                 Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}"
+                 Height="35" Width="105" Margin="5,0,0,0">
+                <StackPanel>
+                    <TextBlock Text="👥" FontSize="10" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Quản lý User" FontWeight="Bold" FontSize="10"/>
+                </StackPanel>
+            </RadioButton>
+        </StackPanel>
+
+        <ContentControl Content="{Binding CurrentReportView}" Margin="27,86,28,10" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>

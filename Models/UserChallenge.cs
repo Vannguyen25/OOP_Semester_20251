@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OOP_Semester.Models
@@ -6,20 +7,24 @@ namespace OOP_Semester.Models
     [Table("userchallenges")]
     public class UserChallenge
     {
-        [Key, Column(Order = 0)]
+        // Khóa chính phức hợp (Composite Key) sẽ được cấu hình trong AppDbContext
         public int UserID { get; set; }
-
-        [Key, Column(Order = 1)]
         public int ChallengesID { get; set; }
 
-        // "decimal(5,2)" -> decimal
-        public decimal Progress { get; set; } = 0;
+        public decimal Progress { get; set; } // 0 -> 100
 
-        // --- Navigation Properties ---
+        public DateTime JoinDate { get; set; } = DateTime.Now;
+
+        public string Status { get; set; } = "Ongoing"; // "Ongoing", "Completed", "Expired"
+
+        public bool IsRewardClaimed { get; set; }
+
+        // --- NAVIGATION PROPERTIES (QUAN TRỌNG ĐỂ DÙNG .Include()) ---
+
         [ForeignKey("UserID")]
-        public virtual User? User { get; set; }
+        public virtual User User { get; set; }
 
         [ForeignKey("ChallengesID")]
-        public virtual Challenge? Challenge { get; set; }
+        public virtual Challenge Challenge { get; set; }
     }
 }

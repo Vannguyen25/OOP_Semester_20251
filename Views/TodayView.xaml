@@ -4,8 +4,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             d:DesignHeight="800" d:DesignWidth="1000"
-             FontFamily="Segoe UI">
+             d:DesignHeight="800"
+             FontFamily="Segoe UI" Width="836">
 
     <UserControl.Resources>
         <SolidColorBrush x:Key="BgLightBrush" Color="#F7F9FC"/>
@@ -73,7 +73,7 @@
                     <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}" Padding="25">
                         <Grid>
                             <StackPanel>
-                                <TextBlock Text="{Binding Greeting}" FontSize="22" FontWeight="Black" Foreground="{StaticResource TextMainBrush}"/>
+                                <TextBlock Text="{Binding Greeting}" FontSize="16" FontWeight="Black" Foreground="{StaticResource TextMainBrush}"/>
                                 <TextBlock Text="{Binding StreakMessage}" FontSize="14" Foreground="{StaticResource TextSecondaryBrush}" Margin="0,4,0,20"/>
 
                                 <StackPanel Orientation="Horizontal">
@@ -120,7 +120,7 @@
                             </Grid>
 
                             <Button Content="Continue" Margin="0,15,0,0" Background="White" Foreground="{StaticResource AccentOrangeBrush}" 
-                                    BorderThickness="0" FontWeight="Bold" Padding="10,6" Cursor="Hand">
+                                    BorderThickness="0" FontWeight="Bold" Padding="10,6" Cursor="Hand" Command="{Binding ContinueChallengeCommand}">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="10"/>
@@ -242,7 +242,7 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Column="2">
+            <StackPanel Grid.Column="2" Margin="0,0,10,0">
 
                 <Border Style="{StaticResource CardBorderStyle}" Padding="18">
                     <StackPanel>

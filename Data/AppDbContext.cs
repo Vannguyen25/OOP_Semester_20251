@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OOP_Semester.Models;
+using YourNamespace.Models;
 
 namespace OOP_Semester.Data
 {
@@ -7,6 +8,7 @@ namespace OOP_Semester.Data
     {
         // --- Danh sách các bảng (Đã cập nhật đầy đủ) ---
         public DbSet<User> Users { get; set; }
+        public DbSet<HabitTemplate> HabitTemplates { get; set; }
         public DbSet<UserFood> UserFoods { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<Challenge> Challenges { get; set; }
@@ -25,6 +27,7 @@ namespace OOP_Semester.Data
         public DbSet<ChallengeTask> ChallengeTasks { get; set; }
         public DbSet<UserChallenge> UserChallenges { get; set; }
         public DbSet<Notify> Notify { get; set; }
+        public DbSet<UserChallengeTask> UserChallengeTasks { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

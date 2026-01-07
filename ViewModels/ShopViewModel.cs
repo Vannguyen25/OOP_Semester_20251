@@ -11,9 +11,6 @@ using System.Windows.Input;
 
 namespace OOP_Semester.ViewModels
 {
-    // =========================================================================
-    // 1. CLASS PHỤ: SHOP ITEM 
-    // =========================================================================
     public class ShopItemViewModel : INotifyPropertyChanged
     {
         private readonly Food _food;
@@ -83,9 +80,6 @@ namespace OOP_Semester.ViewModels
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 
-    // =========================================================================
-    // 2. CLASS CHÍNH: SHOP VIEW MODEL
-    // =========================================================================
     public class ShopViewModel : ViewModelBase
     {
         public event Action? PurchaseSuccess;
@@ -98,7 +92,6 @@ namespace OOP_Semester.ViewModels
             set { _currentUser = value; OnPropertyChanged(); OnPropertyChanged(nameof(UserGold)); }
         }
 
-        // ⭐ QUAN TRỌNG: Property Wrapper để Binding số vàng lên View
         public int UserGold
         {
             get => _currentUser?.GoldAmount ?? 0;
@@ -107,7 +100,7 @@ namespace OOP_Semester.ViewModels
                 if (_currentUser != null && _currentUser.GoldAmount != value)
                 {
                     _currentUser.GoldAmount = value;
-                    OnPropertyChanged(); // Báo cho View biết UserGold đã đổi
+                    OnPropertyChanged();
                 }
             }
         }
@@ -140,19 +133,65 @@ namespace OOP_Semester.ViewModels
                 _context = new AppDbContext();
                 if (!_context.Database.CanConnect()) throw new Exception("Cannot connect to Database.");
 
+                // ✅ nghe coins global để UI shop tự update khi Today/Challenge cộng coin
+                GlobalChangeHub.CoinsChanged += OnGlobalCoinsChanged;
+
                 LoadData();
+                GlobalChangeHub.GoldChanged += OnGlobalGoldChanged;
+                GlobalChangeHub.PetChanged += OnGlobalPetChanged;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error initializing Shop: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void OnGlobalGoldChanged(object sender, int newGold)
+        {
+            if (ReferenceEquals(sender, this)) return;
 
-        private void LoadData()
+            // Wrapper UserGold tự OnPropertyChanged + UpdateAffordability
+            UserGold = newGold;
+            RefreshAffordability();
+        }
+
+        private void OnGlobalPetChanged(object sender)
+        {
+            if (ReferenceEquals(sender, this)) return;
+            ReloadPetInfo();
+        }
+
+        private void ReloadPetInfo()
+        {
+            // IMPORTANT: Shop dùng _context sống lâu nên phải Clear tracking để query fresh
+            _context.ChangeTracker.Clear();
+
+            CurrentPet = _context.Pets.FirstOrDefault(p => p.UserID == _currentUser.UserID);
+            if (CurrentPet != null)
+            {
+                var nextLevel = _context.PetTypes
+                    .FirstOrDefault(pt => pt.PetTypeID == CurrentPet.PetTypeID && pt.Level == CurrentPet.Level + 1);
+
+                MaxExp = nextLevel?.ExperienceRequired ?? (CurrentPet.Experience > 0 ? CurrentPet.Experience : 100);
+            }
+
+            OnPropertyChanged(nameof(CurrentPet));
+            OnPropertyChanged(nameof(MaxExp));
+        }
+
+        private void OnGlobalCoinsChanged(object sender, int newCoins)
+        {
+            if (ReferenceEquals(sender, this)) return;
+
+            // update UI + affordability
+            UserGold = newCoins;
+            RefreshAffordability();
+        }
+
+        public void LoadData()
         {
             try
             {
-                // 1. Load Pet Info
                 CurrentPet = _context.Pets.FirstOrDefault(p => p.UserID == _currentUser.UserID);
                 if (CurrentPet != null)
                 {
@@ -160,7 +199,6 @@ namespace OOP_Semester.ViewModels
                     MaxExp = nextLevel?.ExperienceRequired ?? (CurrentPet.Experience > 0 ? CurrentPet.Experience : 100);
                 }
 
-                // 2. Load Products
                 var foods = _context.Foods.ToList();
                 Products.Clear();
                 foreach (var food in foods)
@@ -182,7 +220,6 @@ namespace OOP_Semester.ViewModels
             {
                 int totalCost = item.TotalPrice;
 
-                // ⭐ Dùng Wrapper Property
                 int currentGold = UserGold;
 
                 if (currentGold < totalCost)
@@ -191,10 +228,8 @@ namespace OOP_Semester.ViewModels
                     return;
                 }
 
-                // ⭐ Trừ tiền thông qua Wrapper Property -> Tự động cập nhật View
                 UserGold = currentGold - totalCost;
 
-                // --- Xử lý DB ---
                 var userFood = _context.UserFoods.FirstOrDefault(uf => uf.UserID == _currentUser.UserID && uf.FoodID == item.FoodID);
 
                 if (userFood != null)
@@ -215,22 +250,27 @@ namespace OOP_Semester.ViewModels
                 _context.GoldTransactions.Add(new GoldTransaction
                 {
                     UserID = _currentUser.UserID,
-                    Amount = -totalCost
+                    Amount = -totalCost,
+                    TransactionDate = DateTime.Now,
+                    Source = "Cửa hàng",
+                    Note = $"Mua {item.QuantityToBuy} x {item.Name}"
                 });
 
                 _context.Users.Update(_currentUser);
                 _context.SaveChanges();
 
-                // Reset UI
                 item.QuantityToBuy = 1;
                 RefreshAffordability();
 
+                // ✅ broadcast coin + inventory
+                GlobalChangeHub.RaiseCoinsChanged(this, UserGold);
+                GlobalChangeHub.RaiseInventoryChanged(this);
+
                 MessageBox.Show($"Mua thành công {item.Name}!", "Shop HabitPet");
-                PurchaseSuccess?.Invoke();
+                PurchaseSuccess?.Invoke(); // giữ nguyên
             }
             catch (Exception ex)
             {
-                // Rollback UI nếu lỗi
                 try { _context.Entry(_currentUser).Reload(); OnPropertyChanged(nameof(UserGold)); } catch { }
                 MessageBox.Show($"Lỗi giao dịch: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -240,7 +280,7 @@ namespace OOP_Semester.ViewModels
         {
             try
             {
-                int gold = UserGold; // Lấy từ Wrapper
+                int gold = UserGold;
                 foreach (var prod in Products)
                 {
                     prod.UpdateAffordability(gold);

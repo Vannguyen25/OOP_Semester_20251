@@ -3,192 +3,100 @@
   "WorkspaceRootPath": "D:\\OOP\\OOP_Semester\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\todayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\todayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\feedingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\feedingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\feedingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\feedingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\shopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\shopview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\habitviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\habitviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\habitview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\habitview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\habit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\habit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\report\\dailyreportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\report\\dailyreportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\habitmonthwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\habitmonthwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\habitlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\habitlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\habitreminder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\habitreminder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\habitviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\habitviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\settingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\settingviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\statisticviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\statisticviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\habitview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\habitview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\notifyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\notifyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\oop_semester.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:oop_semester.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\report\\goldtransactionreportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\report\\goldtransactionreportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\statisticview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\statisticview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\habitmonthwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\habitmonthwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\homeview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\habitmonthwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\habitmonthwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\todayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\todayview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\todayview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\todayview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\report\\habithistorywindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\report\\habithistorywindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\notifyview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\notifyview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\report\\habithistoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\report\\habithistoryviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\authview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\authview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\todayviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\settingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\settingview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\notifyview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\notifyview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\pettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\pettype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\notify.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\notify.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\shopview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\shopview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\statisticview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\statisticview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\base\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\base\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\settingview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\settingview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\authviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\authviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\homeview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\homeview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\userfood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\userfood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\homeviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\base\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\base\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\pet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\statisticviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\statisticviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\feedingview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\feedingview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\authview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\authview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\base\\globalchangehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\base\\globalchangehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:converters\\booleantovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\report\\aduserreportviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\report\\aduserreportviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\report\\aduserreportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\report\\aduserreportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\report\\adchallengereportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\report\\adchallengereportview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\views\\report\\aduserreportview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:views\\report\\aduserreportview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\viewmodels\\report\\adchallengereportviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:viewmodels\\report\\adchallengereportviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|d:\\oop\\oop_semester\\models\\messenger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11388B5D-07B0-4330-A7A7-7ABFCC614E28}|OOP_Semester.csproj|solutionrelative:models\\messenger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -198,7 +106,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 306,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -218,562 +126,288 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FeedingView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\FeedingView.xaml",
-              "RelativeDocumentMoniker": "Views\\FeedingView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\FeedingView.xaml",
-              "RelativeToolTip": "Views\\FeedingView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-04T00:24:50.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ShopView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml",
-              "RelativeDocumentMoniker": "Views\\ShopView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml",
-              "RelativeToolTip": "Views\\ShopView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-02T03:18:38.467Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FeedingViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\FeedingViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\FeedingViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\FeedingViewModel.cs",
-              "RelativeToolTip": "ViewModels\\FeedingViewModel.cs",
-              "ViewState": "AgIAAB0BAAAAAAAAAAAwwDQBAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "HabitViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\HabitViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitViewModel.cs",
+              "RelativeToolTip": "ViewModels\\HabitViewModel.cs",
+              "ViewState": "AgIAALUAAAAAAAAAAAAtwMEAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T09:48:26.367Z",
+              "WhenOpened": "2026-01-07T15:07:38.663Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TodayViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\TodayViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\TodayViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\TodayViewModel.cs",
-              "RelativeToolTip": "ViewModels\\TodayViewModel.cs",
-              "ViewState": "AgIAAEUBAAAAAAAAAAAowEwBAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T16:12:39.28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TodayView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml",
-              "RelativeDocumentMoniker": "Views\\TodayView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml",
-              "RelativeToolTip": "Views\\TodayView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-03T14:18:56.496Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "HabitView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitView.xaml",
               "RelativeDocumentMoniker": "Views\\HabitView.xaml",
               "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\HabitView.xaml",
               "RelativeToolTip": "Views\\HabitView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-03T15:19:25.107Z",
+              "WhenOpened": "2026-01-07T15:06:24.267Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "HabitMonthWindowViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitMonthWindowViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\HabitMonthWindowViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitMonthWindowViewModel.cs",
-              "RelativeToolTip": "ViewModels\\HabitMonthWindowViewModel.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAApwL0AAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T14:28:04.417Z"
+              "DocumentIndex": 3,
+              "Title": "GoldTransactionReportView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\Report\\GoldTransactionReportView.xaml",
+              "RelativeDocumentMoniker": "Views\\Report\\GoldTransactionReportView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\Report\\GoldTransactionReportView.xaml",
+              "RelativeToolTip": "Views\\Report\\GoldTransactionReportView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-07T15:05:47.506Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Habit.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Habit.cs",
-              "RelativeDocumentMoniker": "Models\\Habit.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Habit.cs",
-              "RelativeToolTip": "Models\\Habit.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAwwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T14:17:00.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HabitLog.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\HabitLog.cs",
-              "RelativeDocumentMoniker": "Models\\HabitLog.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\HabitLog.cs",
-              "RelativeToolTip": "Models\\HabitLog.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwB4AAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T14:50:05.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HabitReminder.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\HabitReminder.cs",
-              "RelativeDocumentMoniker": "Models\\HabitReminder.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\HabitReminder.cs",
-              "RelativeToolTip": "Models\\HabitReminder.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAcwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T15:38:31.131Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "HabitViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\HabitViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\HabitViewModel.cs",
-              "RelativeToolTip": "ViewModels\\HabitViewModel.cs",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAiwIoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T15:19:47.427Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "HomeViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HomeViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\HomeViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\HomeViewModel.cs",
-              "RelativeToolTip": "ViewModels\\HomeViewModel.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAYwEsAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T05:40:27.106Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBAAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T01:54:46.093Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SettingViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\SettingViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\SettingViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\SettingViewModel.cs",
-              "RelativeToolTip": "ViewModels\\SettingViewModel.cs",
-              "ViewState": "AgIAANMAAAAAAAAAAAD4v9oAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T05:43:06.616Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "StatisticViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\StatisticViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\StatisticViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\StatisticViewModel.cs",
-              "RelativeToolTip": "ViewModels\\StatisticViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:05:40.369Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\App.xaml",
-              "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\App.xaml",
-              "RelativeToolTip": "App.xaml",
+              "Title": "TodayView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml",
+              "RelativeDocumentMoniker": "Views\\TodayView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml",
+              "RelativeToolTip": "Views\\TodayView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-02T04:05:33.151Z",
+              "WhenOpened": "2026-01-07T12:18:34.272Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DailyReportView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\Report\\DailyReportView.xaml",
+              "RelativeDocumentMoniker": "Views\\Report\\DailyReportView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\Report\\DailyReportView.xaml",
+              "RelativeToolTip": "Views\\Report\\DailyReportView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-06T18:38:11.483Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 5,
               "Title": "HomeView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HomeView.xaml",
               "RelativeDocumentMoniker": "Views\\HomeView.xaml",
               "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\HomeView.xaml",
               "RelativeToolTip": "Views\\HomeView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-01T06:15:23.461Z"
+              "WhenOpened": "2026-01-07T13:17:53.519Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "HabitView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\HabitView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\HabitView.xaml.cs",
-              "RelativeToolTip": "Views\\HabitView.xaml.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T15:59:16.825Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "Data\\AppDbContext.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAA8wBYAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:58:37.027Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "NotifyViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\NotifyViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\NotifyViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\NotifyViewModel.cs",
-              "RelativeToolTip": "ViewModels\\NotifyViewModel.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAwwF0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:54:28.808Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "BooleanToVisibilityConverter.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Converters\\BooleanToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Converters\\BooleanToVisibilityConverter.cs",
-              "RelativeToolTip": "Converters\\BooleanToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T15:12:14.464Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "OOP_Semester.csproj",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\OOP_Semester.csproj",
-              "RelativeDocumentMoniker": "OOP_Semester.csproj",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\OOP_Semester.csproj",
-              "RelativeToolTip": "OOP_Semester.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-01-03T15:11:40.439Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "HabitMonthWindow.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitMonthWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\HabitMonthWindow.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\HabitMonthWindow.xaml.cs",
-              "RelativeToolTip": "Views\\HabitMonthWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-03T14:27:17.835Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "HabitMonthWindow.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HabitMonthWindow.xaml",
-              "RelativeDocumentMoniker": "Views\\HabitMonthWindow.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\HabitMonthWindow.xaml",
-              "RelativeToolTip": "Views\\HabitMonthWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-03T14:26:53.154Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 4,
               "Title": "StatisticView.xaml",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\StatisticView.xaml",
               "RelativeDocumentMoniker": "Views\\StatisticView.xaml",
               "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\StatisticView.xaml",
               "RelativeToolTip": "Views\\StatisticView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-02T09:04:54.002Z"
+              "WhenOpened": "2026-01-07T14:24:31.963Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "TodayView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\TodayView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\TodayView.xaml.cs",
-              "RelativeToolTip": "Views\\TodayView.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T03:39:47.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "AuthView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\AuthView.xaml",
-              "RelativeDocumentMoniker": "Views\\AuthView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\AuthView.xaml",
-              "RelativeToolTip": "Views\\AuthView.xaml",
+              "DocumentIndex": 7,
+              "Title": "HabitHistoryWindow.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\Report\\HabitHistoryWindow.xaml",
+              "RelativeDocumentMoniker": "Views\\Report\\HabitHistoryWindow.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\Report\\HabitHistoryWindow.xaml",
+              "RelativeToolTip": "Views\\Report\\HabitHistoryWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-01T09:13:30.214Z"
+              "WhenOpened": "2026-01-07T14:22:48.89Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "NotifyView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\NotifyView.xaml",
-              "RelativeDocumentMoniker": "Views\\NotifyView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\NotifyView.xaml",
-              "RelativeToolTip": "Views\\NotifyView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-02T09:18:46.549Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "SettingView.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\SettingView.xaml",
-              "RelativeDocumentMoniker": "Views\\SettingView.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\SettingView.xaml",
-              "RelativeToolTip": "Views\\SettingView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-01T09:48:36.861Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "NotifyView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\NotifyView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\NotifyView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\NotifyView.xaml.cs",
-              "RelativeToolTip": "Views\\NotifyView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAkwAsAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "HabitHistoryViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Report\\HabitHistoryViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Report\\HabitHistoryViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\Report\\HabitHistoryViewModel.cs",
+              "RelativeToolTip": "ViewModels\\Report\\HabitHistoryViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:53:54.278Z"
+              "WhenOpened": "2026-01-07T14:22:42.334Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "PetType.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\PetType.cs",
-              "RelativeDocumentMoniker": "Models\\PetType.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\PetType.cs",
-              "RelativeToolTip": "Models\\PetType.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAA3wBkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T01:36:01.914Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Notify.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Notify.cs",
-              "RelativeDocumentMoniker": "Models\\Notify.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Notify.cs",
-              "RelativeToolTip": "Models\\Notify.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:44:02.044Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "ShopView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\ShopView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\ShopView.xaml.cs",
-              "RelativeToolTip": "Views\\ShopView.xaml.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T03:22:47.952Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "StatisticView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\StatisticView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\StatisticView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\StatisticView.xaml.cs",
-              "RelativeToolTip": "Views\\StatisticView.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T09:06:29.399Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "ViewModelBase.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\ViewModelBase.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Base\\ViewModelBase.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\ViewModelBase.cs",
-              "RelativeToolTip": "ViewModels\\Base\\ViewModelBase.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAYwAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T05:22:06.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAIwCkAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T04:05:44.044Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "SettingView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\SettingView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\SettingView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\SettingView.xaml.cs",
-              "RelativeToolTip": "Views\\SettingView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T01:48:01.466Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\User.cs",
-              "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\User.cs",
-              "RelativeToolTip": "Models\\User.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBMAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T05:49:30.795Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "AuthViewModel.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\AuthViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AuthViewModel.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\AuthViewModel.cs",
-              "RelativeToolTip": "ViewModels\\AuthViewModel.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAADwvzEAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T01:55:20.244Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Views\\MainWindow.xaml",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\MainWindow.xaml",
-              "RelativeToolTip": "Views\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-01-01T09:13:28.563Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "HomeView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\HomeView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\HomeView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\HomeView.xaml.cs",
-              "RelativeToolTip": "Views\\HomeView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-26T06:25:01.039Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "UserFood.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\UserFood.cs",
-              "RelativeDocumentMoniker": "Models\\UserFood.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\UserFood.cs",
-              "RelativeToolTip": "Models\\UserFood.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAiwB0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T01:35:18.611Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "Food.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Food.cs",
-              "RelativeDocumentMoniker": "Models\\Food.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Food.cs",
-              "RelativeToolTip": "Models\\Food.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T03:31:57.865Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 11,
               "Title": "RelayCommand.cs",
               "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\RelayCommand.cs",
               "RelativeDocumentMoniker": "ViewModels\\Base\\RelayCommand.cs",
               "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\RelayCommand.cs",
               "RelativeToolTip": "ViewModels\\Base\\RelayCommand.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAuwBoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T01:54:49.74Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Pet.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Pet.cs",
-              "RelativeDocumentMoniker": "Models\\Pet.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Pet.cs",
-              "RelativeToolTip": "Models\\Pet.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAswCcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T09:07:31.935Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
-              "Title": "FeedingView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\FeedingView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\FeedingView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\FeedingView.xaml.cs",
-              "RelativeToolTip": "Views\\FeedingView.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-01T09:15:07.941Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 46,
-              "Title": "AuthView.xaml.cs",
-              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\AuthView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\AuthView.xaml.cs",
-              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\AuthView.xaml.cs",
-              "RelativeToolTip": "Views\\AuthView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-31T05:56:46.848Z"
+              "WhenOpened": "2026-01-07T12:20:22.696Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TodayViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\TodayViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\TodayViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\TodayViewModel.cs",
+              "RelativeToolTip": "ViewModels\\TodayViewModel.cs",
+              "ViewState": "AgIAAH4BAAAAAAAAAAAmwIgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T12:18:06.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HomeViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\HomeViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\HomeViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\HomeViewModel.cs",
+              "RelativeToolTip": "ViewModels\\HomeViewModel.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAiwFsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T12:17:29.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T12:17:24.428Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GlobalChangeHub.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\GlobalChangeHub.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Base\\GlobalChangeHub.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\Base\\GlobalChangeHub.cs",
+              "RelativeToolTip": "ViewModels\\Base\\GlobalChangeHub.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwBkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T12:16:36.339Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BooleanToVisibilityConverter.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Converters\\BooleanToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "Converters\\BooleanToVisibilityConverter.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Converters\\BooleanToVisibilityConverter.cs",
+              "RelativeToolTip": "Converters\\BooleanToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T12:16:25.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwDEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T11:54:48.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AdUserReportViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Report\\AdUserReportViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Report\\AdUserReportViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\Report\\AdUserReportViewModel.cs",
+              "RelativeToolTip": "ViewModels\\Report\\AdUserReportViewModel.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAAwF0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T11:51:30.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "AdChallengeReportViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\Report\\AdChallengeReportViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\Report\\AdChallengeReportViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\Report\\AdChallengeReportViewModel.cs",
+              "RelativeToolTip": "ViewModels\\Report\\AdChallengeReportViewModel.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAcwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T11:49:08.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AdUserReportView.xaml.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\Report\\AdUserReportView.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\Report\\AdUserReportView.xaml.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\Report\\AdUserReportView.xaml.cs",
+              "RelativeToolTip": "Views\\Report\\AdUserReportView.xaml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T06:00:15.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AdUserReportView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\Report\\AdUserReportView.xaml",
+              "RelativeDocumentMoniker": "Views\\Report\\AdUserReportView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\Report\\AdUserReportView.xaml",
+              "RelativeToolTip": "Views\\Report\\AdUserReportView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-07T05:52:58.163Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AdChallengeReportView.xaml",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Views\\Report\\AdChallengeReportView.xaml",
+              "RelativeDocumentMoniker": "Views\\Report\\AdChallengeReportView.xaml",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Views\\Report\\AdChallengeReportView.xaml",
+              "RelativeToolTip": "Views\\Report\\AdChallengeReportView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-01-07T05:45:49.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Enum.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Enum.cs",
+              "RelativeDocumentMoniker": "Models\\Enum.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Enum.cs",
+              "RelativeToolTip": "Models\\Enum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T04:03:15.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Messenger.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\Models\\Messenger.cs",
+              "RelativeDocumentMoniker": "Models\\Messenger.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\Models\\Messenger.cs",
+              "RelativeToolTip": "Models\\Messenger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T04:02:53.127Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "StatisticViewModel.cs",
+              "DocumentMoniker": "D:\\OOP\\OOP_Semester\\ViewModels\\StatisticViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\StatisticViewModel.cs",
+              "ToolTip": "D:\\OOP\\OOP_Semester\\ViewModels\\StatisticViewModel.cs",
+              "RelativeToolTip": "ViewModels\\StatisticViewModel.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwBgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T03:48:11.652Z"
             }
           ]
         },

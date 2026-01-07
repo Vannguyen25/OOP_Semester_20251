@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="OOP_Semester.Views.Report.GoldTransactionReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:OOP_Semester.Converters"
+             Background="#F9FAFB" FontFamily="Segoe UI">
+
+    <UserControl.Resources>
+        <converters:IsPositiveConverter x:Key="IsPositiveConverter"/>
+
+        <DropShadowEffect x:Key="CardShadow" BlurRadius="15" ShadowDepth="1" Opacity="0.05" Color="Black"/>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30">
+            <TextBlock Text="Báo Cáo Giao Dịch Vàng" FontSize="28" FontWeight="Bold" Foreground="#111827"/>
+            <TextBlock Text="Theo dõi chi tiết dòng tiền và lịch sử giao dịch trong ứng dụng." Foreground="#6B7280" Margin="0,5,0,25"/>
+
+            <UniformGrid Columns="3" Margin="0,0,0,25">
+                <Border Background="White" CornerRadius="16" Padding="20" Margin="0,0,15,0" Effect="{StaticResource CardShadow}">
+                    <StackPanel>
+                        <TextBlock Text="⬆ TỔNG THU" Foreground="#10B981" FontWeight="SemiBold" FontSize="12"/>
+                        <TextBlock Text="{Binding TotalIncome, StringFormat='{}{0:N0} Vàng'}" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="White" CornerRadius="16" Padding="20" Margin="0,0,15,0" Effect="{StaticResource CardShadow}">
+                    <StackPanel>
+                        <TextBlock Text="⬇ TỔNG CHI" Foreground="#EF4444" FontWeight="SemiBold" FontSize="12"/>
+                        <TextBlock Text="{Binding TotalExpense, StringFormat='-{0:N0} Vàng'}" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="#EA580C" CornerRadius="16" Padding="20" Effect="{StaticResource CardShadow}">
+                    <StackPanel>
+                        <TextBlock Text="🏦 SỐ DƯ HIỆN TẠI" Foreground="White" FontWeight="SemiBold" FontSize="12" Opacity="0.8"/>
+                        <TextBlock Text="{Binding CurrentBalance, StringFormat='{}{0:N0} Vàng'}" Foreground="White" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+            </UniformGrid>
+
+            <Border Background="White" CornerRadius="16" Padding="20" Margin="0,0,0,25" Effect="{StaticResource CardShadow}">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="0,0,20,0">
+                        <TextBlock Text="TỪ NGÀY" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                        <DatePicker SelectedDate="{Binding StartDate}" Width="150"/>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,20,0">
+                        <TextBlock Text="ĐẾN NGÀY" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                        <DatePicker SelectedDate="{Binding EndDate}" Width="150"/>
+                    </StackPanel>
+                    <Button Content="Áp dụng" Command="{Binding FilterCommand}" Background="#EA580C" Foreground="White" Padding="25,0" Height="38" VerticalAlignment="Bottom" Cursor="Hand" BorderThickness="0">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="8"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" CornerRadius="16" Effect="{StaticResource CardShadow}">
+                <StackPanel>
+                    <Border Background="#F9FAFB" CornerRadius="16,16,0,0" Padding="20,15">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="THỜI GIAN" FontWeight="Bold" Foreground="#9CA3AF" FontSize="11"/>
+                            <TextBlock Text="NGUỒN" FontWeight="Bold" Foreground="#9CA3AF" FontSize="11" Grid.Column="1"/>
+                            <TextBlock Text="GHI CHÚ" FontWeight="Bold" Foreground="#9CA3AF" FontSize="11" Grid.Column="2"/>
+                            <TextBlock Text="SỐ LƯỢNG" FontWeight="Bold" Foreground="#9CA3AF" FontSize="11" Grid.Column="3" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <ItemsControl ItemsSource="{Binding Transactions}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="#F3F4F6" BorderThickness="0,0,0,1" Padding="20,15">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="150"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="120"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding TransactionDate, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Foreground="#4B5563" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Source}" Grid.Column="1" VerticalAlignment="Center" FontWeight="Medium"/>
+                                        <TextBlock Text="{Binding Note}" Grid.Column="2" VerticalAlignment="Center" Foreground="#6B7280"/>
+                                        <TextBlock Text="{Binding Amount, StringFormat='{}{0:+#;-#;0} Vàng'}" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Bold">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Amount, Converter={StaticResource IsPositiveConverter}}" Value="True">
+                                                            <Setter Property="Foreground" Value="#10B981"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Amount, Converter={StaticResource IsPositiveConverter}}" Value="False">
+                                                            <Setter Property="Foreground" Value="#EF4444"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

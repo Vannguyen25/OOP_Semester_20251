@@ -11,15 +11,15 @@ namespace OOP_Semester.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TransactionID { get; set; }
 
-        // Khóa ngoại trỏ về bảng User
         public int UserID { get; set; }
 
-        // Số lượng vàng thay đổi (Dương là cộng, Âm là trừ)
         public int Amount { get; set; }
 
-        // --- Quan hệ (Navigation Property) ---
-        // Giúp em truy vấn xem giao dịch này của ai
-        [ForeignKey("UserID")]
-        public virtual User? User { get; set; }
+        // Cột mới thêm để lưu thời gian giao dịch
+        public DateTime TransactionDate { get; set; } = DateTime.Now;
+
+        // Các cột bổ sung để hiển thị giống hình 4 (Nếu bạn muốn)
+        public string? Source { get; set; } = "Cửa hàng"; // Nguồn: "Nhiệm vụ", "Cửa hàng"...
+        public string? Note { get; set; } = "Mua đồ"; // Ghi chú chi tiết
     }
 }

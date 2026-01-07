@@ -1,0 +1,419 @@
+﻿<UserControl x:Class="OOP_Semester.Views.AdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:OOP_Semester.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="1200" d:DesignWidth="1200"
+             Background="#F8F7F6" FontFamily="Segoe UI">
+
+    <UserControl.Resources>
+        <DropShadowEffect x:Key="CardShadow" BlurRadius="15" ShadowDepth="4" Opacity="0.05" Color="Black" Direction="270"/>
+
+        <SolidColorBrush x:Key="Primary" Color="#EE7C2B"/>
+        <SolidColorBrush x:Key="TextMain" Color="#1B130D"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#9A6C4C"/>
+        <SolidColorBrush x:Key="BorderColor" Color="#E7D9CF"/>
+        <SolidColorBrush x:Key="Surface" Color="White"/>
+        <SolidColorBrush x:Key="GrayBg" Color="#F3F4F6"/>
+
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <conv:EnumToBoolConverter x:Key="EnumToBool"/>
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource Surface}"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="24"/>
+            <Setter Property="Margin" Value="0,0,0,24"/>
+            <Setter Property="Effect" Value="{StaticResource CardShadow}"/>
+        </Style>
+
+        <Style x:Key="OrangeButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource Primary}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="GrayButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource GrayBg}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextMain}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#E5E7EB"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="InputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Padding" Value="12,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource Primary}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#4B5563"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
+
+        <Style x:Key="SessionRadioStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="6" Padding="12,6" Margin="0,0,8,0" Cursor="Hand">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.FontWeight="SemiBold"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="bd" Property="Background" Value="#1AEE7C2B"/>
+                                <Setter TargetName="bd" Property="BorderBrush" Value="{StaticResource Primary}"/>
+                                <Setter Property="Foreground" Value="{StaticResource Primary}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="DatePicker">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DatePicker">
+                        <Border Background="White" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="10" Padding="5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <DatePickerTextBox x:Name="PART_TextBox" Grid.Column="0" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Center"/>
+                                <Button x:Name="PART_Button" Grid.Column="1" Width="30" Background="Transparent" BorderThickness="0" Foreground="{StaticResource Primary}" Focusable="False">
+                                    <TextBlock Text="📅" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Button>
+                                <Popup x:Name="PART_Popup"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" Padding="24,20" BorderBrush="#F3F4F6" BorderThickness="0,0,0,1">
+            <TextBlock Text="Admin Portal > Quản lý hệ thống" Foreground="{StaticResource TextSecondary}" FontWeight="SemiBold"/>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="40" Margin="0,0,0,-231">
+            <Grid MaxWidth="1200" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.4*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <StackPanel Margin="0,0,0,24">
+                        <TextBlock Text="Tạo Thử Thách Mới" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextMain}"/>
+                        <TextBlock Text="Thiết lập chiến dịch thử thách." Foreground="{StaticResource TextSecondary}" Margin="0,4,0,0"/>
+                    </StackPanel>
+
+                    <Border Style="{StaticResource CardStyle}">
+                        <StackPanel>
+                            <TextBlock Text="Thông tin chung" Style="{StaticResource LabelStyle}" FontSize="16" Margin="0,0,0,16"/>
+                            <TextBlock Text="Tên thử thách *" Style="{StaticResource LabelStyle}"/>
+                            <TextBox Style="{StaticResource InputStyle}" Text="{Binding ChallengeTitle}" Margin="0,0,0,16"/>
+                            <TextBlock Text="Mô tả chi tiết" Style="{StaticResource LabelStyle}"/>
+                            <TextBox Style="{StaticResource InputStyle}" Height="80" Text="{Binding ChallengeDescription}" TextWrapping="Wrap" VerticalContentAlignment="Top" Padding="12,12" Margin="0,0,0,16"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="16"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="Ngày bắt đầu" Style="{StaticResource LabelStyle}"/>
+                                    <DatePicker SelectedDate="{Binding StartDate}" Height="44"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="Ngày kết thúc" Style="{StaticResource LabelStyle}"/>
+                                    <DatePicker SelectedDate="{Binding EndDate}" Height="44"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Style="{StaticResource CardStyle}">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,10">
+                                <TextBlock Text="Phần thưởng" Style="{StaticResource LabelStyle}" FontSize="16"/>
+                                <TextBlock Text="🏆" FontSize="20" HorizontalAlignment="Right"/>
+                            </Grid>
+                            <TextBlock Text="Coins thưởng (Vàng)" Style="{StaticResource LabelStyle}"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Style="{StaticResource InputStyle}" Text="{Binding RewardCoins}" FontWeight="Bold" Foreground="{StaticResource Primary}"/>
+                                <TextBlock Grid.Column="1" Text="G" Foreground="{StaticResource Primary}" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,40">
+                        <Button Command="{Binding CreateChallengeCommand}" Content="🚀 Tạo Thử Thách" Style="{StaticResource OrangeButtonStyle}" Height="34" Width="111"/>
+                    </StackPanel>
+
+                    <Border BorderBrush="#E5E7EB" BorderThickness="0,1,0,0" Margin="0,0,0,40"/>
+
+                    <StackPanel Margin="0,0,0,24">
+                        <TextBlock Text="Tạo Habit Template Mẫu" FontSize="24" FontWeight="Bold" Foreground="{StaticResource TextMain}"/>
+                        <TextBlock Text="Thêm mẫu vào thư viện để người dùng chọn nhanh." Foreground="{StaticResource TextSecondary}" Margin="0,4,0,0"/>
+                    </StackPanel>
+
+                    <Border Style="{StaticResource CardStyle}" BorderBrush="{StaticResource Primary}" BorderThickness="1">
+                        <StackPanel Width="280">
+                            <Grid Margin="0,0,0,16">
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Background="{StaticResource Primary}" CornerRadius="6" Padding="6" Margin="0,0,10,0">
+                                        <TextBlock Text="📋" Foreground="White" FontWeight="Bold"/>
+                                    </Border>
+                                    <TextBlock Text="Thông tin Template" Style="{StaticResource LabelStyle}" FontSize="16" VerticalAlignment="Center" Margin="0,0,0,8"/>
+                                </StackPanel>
+                                <CheckBox Content="Kích hoạt" IsChecked="{Binding IsTemplate}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <Grid Visibility="{Binding IsTemplate, Converter={StaticResource BoolToVis}}">
+                                <StackPanel>
+                                    <TextBlock Text="Tên thói quen mẫu" Style="{StaticResource LabelStyle}"/>
+                                    <TextBox Style="{StaticResource InputStyle}" Text="{Binding TempHabitName}" Margin="0,0,0,16"/>
+
+                                    <TextBlock Text="Mô tả / Lợi ích" Style="{StaticResource LabelStyle}"/>
+                                    <TextBox Style="{StaticResource InputStyle}" Text="{Binding TempDescription}" Margin="0,0,0,16"/>
+
+                                    <TextBlock Text="Danh mục" Style="{StaticResource LabelStyle}"/>
+                                    <ComboBox Height="44" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedValuePath="CategoryID" SelectedValue="{Binding SelectedCategoryID}"
+                                              Background="White" BorderThickness="1" BorderBrush="{StaticResource BorderColor}" Margin="0,0,0,20"/>
+
+                                    <Grid Margin="0,0,0,20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="1.2*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Margin="0,0,10,0">
+                                            <TextBlock Text="Biểu tượng (Icon)" Style="{StaticResource LabelStyle}"/>
+                                            <Border BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="10" Padding="5" Height="100">
+                                                <ListBox ItemsSource="{Binding IconList}" SelectedValue="{Binding TempIcon}" 
+                                                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="0" Background="Transparent">
+                                                    <ListBox.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel/>
+                                                        </ItemsPanelTemplate>
+                                                    </ListBox.ItemsPanel>
+                                                    <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding}" FontSize="20" Margin="6" Cursor="Hand"/>
+                                                        </DataTemplate>
+                                                    </ListBox.ItemTemplate>
+                                                </ListBox>
+                                            </Border>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1">
+                                            <TextBlock Text="Màu sắc" Style="{StaticResource LabelStyle}"/>
+
+                                            <ListBox ItemsSource="{Binding AvailableColors}" 
+             SelectedValue="{Binding TempColorHex}"
+             BorderThickness="0" 
+             Background="Transparent"
+             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                                                <ListBox.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel/>
+                                                    </ItemsPanelTemplate>
+                                                </ListBox.ItemsPanel>
+
+                                                <ListBox.ItemContainerStyle>
+                                                    <Style TargetType="ListBoxItem">
+                                                        <Setter Property="Cursor" Value="Hand"/>
+                                                        <Setter Property="Margin" Value="4"/>
+                                                        <Setter Property="Padding" Value="0"/>
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="ListBoxItem">
+                                                                    <Grid>
+                                                                        <Ellipse Width="34" Height="34" Fill="{Binding}">
+                                                                            <Ellipse.Effect>
+                                                                                <DropShadowEffect ShadowDepth="1" BlurRadius="2" Opacity="0.2"/>
+                                                                            </Ellipse.Effect>
+                                                                        </Ellipse>
+
+                                                                        <Ellipse x:Name="Ring" Width="42" Height="42" Stroke="{Binding}" StrokeThickness="2" Visibility="Collapsed"/>
+
+                                                                        <ContentPresenter/>
+                                                                    </Grid>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsSelected" Value="True">
+                                                                            <Setter TargetName="Ring" Property="Visibility" Value="Visible"/>
+                                                                            <Setter TargetName="Ring" Property="Opacity" Value="1"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter TargetName="Ring" Property="Visibility" Value="Visible"/>
+                                                                            <Setter TargetName="Ring" Property="Opacity" Value="0.4"/>
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ListBox.ItemContainerStyle>
+                                            </ListBox>
+
+                                            <TextBlock Text="{Binding TempColorHex, StringFormat='Đang chọn: {0}'}" 
+                                            Foreground="{StaticResource TextSecondary}" Margin="5,5,0,0" FontStyle="Italic"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Grid Margin="0,0,0,24">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="16"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock Text="Mục tiêu mặc định" Style="{StaticResource LabelStyle}"/>
+                                            <TextBox Style="{StaticResource InputStyle}" Text="{Binding TempDefaultGoal}"/>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2">
+                                            <TextBlock Text="Đơn vị tính" Style="{StaticResource LabelStyle}"/>
+                                            <TextBox Style="{StaticResource InputStyle}" Text="{Binding TempUnit}"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <Button Command="{Binding CreateTemplateCommand}" Content="Lưu vào Thư viện" Style="{StaticResource OrangeButtonStyle}" HorizontalAlignment="Right" Height="34" Width="109"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                  
+
+                    <Border Style="{StaticResource CardStyle}" MinHeight="450">
+                        <StackPanel>
+                            <Grid Margin="0,0,0,20">
+                                <StackPanel>
+                                    <TextBlock Text="Danh sách nhiệm vụ" Style="{StaticResource LabelStyle}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Tasks.Count, StringFormat='{}{0} tasks'}" FontSize="12" Foreground="{StaticResource TextSecondary}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <ItemsControl ItemsSource="{Binding Tasks}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="White" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="10" Padding="16" Margin="0,0,0,12">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel>
+                                                    <TextBox Text="{Binding Description}" Style="{StaticResource InputStyle}" Background="#F8F7F6" Height="40" Tag="Mô tả nhiệm vụ..." ToolTip="Nhập mô tả nhiệm vụ"/>
+                                                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                        <TextBlock Text="Thời điểm:" VerticalAlignment="Center" FontSize="12" Foreground="{StaticResource TextSecondary}" Margin="0,0,8,0"/>
+
+                                                        <RadioButton GroupName="{Binding TempGroupId}" Content="Sáng" Tag="Morning" 
+                                                         IsChecked="{Binding DailySession, Converter={StaticResource EnumToBool}, ConverterParameter=Morning}" 
+                                                         Style="{StaticResource SessionRadioStyle}"/>
+
+                                                                                                <RadioButton GroupName="{Binding TempGroupId}" Content="Chiều" Tag="Afternoon" 
+                                                         IsChecked="{Binding DailySession, Converter={StaticResource EnumToBool}, ConverterParameter=Afternoon}" 
+                                                         Style="{StaticResource SessionRadioStyle}"/>
+
+                                                                                                <RadioButton GroupName="{Binding TempGroupId}" Content="Tối" Tag="Evening" 
+                                                         IsChecked="{Binding DailySession, Converter={StaticResource EnumToBool}, ConverterParameter=Evening}" 
+                                                         Style="{StaticResource SessionRadioStyle}"/>
+
+                                                                                            <RadioButton GroupName="{Binding TempGroupId}" Content="Cả ngày" Tag="Anytime" 
+                                                         IsChecked="{Binding DailySession, Converter={StaticResource EnumToBool}, ConverterParameter=Anytime}" 
+                                                         Style="{StaticResource SessionRadioStyle}"/>       
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <Button Grid.Column="1" VerticalAlignment="Top" Margin="8,-4,-4,0" Command="{Binding DataContext.RemoveTaskCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}" Background="Transparent" BorderThickness="0" Cursor="Hand">
+                                                    <TextBlock Text="✕" Foreground="#EF4444" FontWeight="Bold" FontSize="16"/>
+                                                </Button>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <Button Command="{Binding AddTaskCommand}" Content="Thêm nhiệm vụ mới" Margin="0,12,0,0" Style="{StaticResource OrangeButtonStyle}" Height="38" Width="150"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

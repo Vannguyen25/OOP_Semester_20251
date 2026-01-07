@@ -218,6 +218,8 @@ namespace OOP_Semester.ViewModels
                     _user.Avatar = Avatar;
                
                     InfoUpdated?.Invoke();
+                    GlobalChangeHub.RaiseDisplayNameChanged(this, _user.Name);
+                    GlobalChangeHub.RaiseAvatarChanged(this, _user.Avatar);
                     if (passwordChanged)
                     {
                         MessageBox.Show("Cập nhật thông tin và đổi mật khẩu thành công!");

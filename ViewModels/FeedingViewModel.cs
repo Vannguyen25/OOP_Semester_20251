@@ -11,22 +11,66 @@ using System.Windows.Input;
 
 namespace OOP_Semester.ViewModels
 {
-    public class FeedingViewModel : INotifyPropertyChanged
+    // ✅ UI wrapper (không đụng vào EF entity)
+    public class UserFoodItemViewModel : INotifyPropertyChanged
+    {
+        public int UserID { get; }
+        public int FoodID { get; }
+        public Food Food { get; }
+
+        private int _quantity;
+        public int Quantity
+        {
+            get => _quantity;
+            set
+            {
+                if (_quantity == value) return;
+                _quantity = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string FoodName => Food?.Name ?? "(Unknown)";
+
+        public UserFoodItemViewModel(UserFood entity)
+        {
+            UserID = entity.UserID;
+            FoodID = entity.FoodID;
+            Food = entity.Food;
+            Quantity = (int)entity.Quantity;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string n = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(n));
+    }
+
+    public class FeedingViewModel : INotifyPropertyChanged, IDisposable
     {
         private readonly AppDbContext _context;
         private readonly User _currentUser;
 
-        // --- PROPERTIES ---
         private Pet _currentPet;
-        public Pet CurrentPet { get => _currentPet; set { _currentPet = value; OnPropertyChanged(); } }
+        public Pet CurrentPet
+        {
+            get => _currentPet;
+            set { _currentPet = value; OnPropertyChanged(); }
+        }
 
         private string _petAvatar;
-        public string PetAvatar { get => _petAvatar; set { _petAvatar = value; OnPropertyChanged(); } }
+        public string PetAvatar
+        {
+            get => _petAvatar;
+            set { _petAvatar = value; OnPropertyChanged(); }
+        }
 
         private int _maxExp = 100;
-        public int MaxExp { get => _maxExp; set { _maxExp = value; OnPropertyChanged(); } }
+        public int MaxExp
+        {
+            get => _maxExp;
+            set { _maxExp = value; OnPropertyChanged(); }
+        }
 
-        // Thêm property này để hiển thị text thay vì số khi Max Level
         private string _expDisplay;
         public string ExpDisplay
         {
@@ -35,15 +79,24 @@ namespace OOP_Semester.ViewModels
         }
 
         private int _hunger;
-        public int Hunger { get => _hunger; set { _hunger = value; OnPropertyChanged(); } }
+        public int Hunger
+        {
+            get => _hunger;
+            set { _hunger = value; OnPropertyChanged(); }
+        }
 
         private int _happiness;
-        public int Happiness { get => _happiness; set { _happiness = value; OnPropertyChanged(); } }
+        public int Happiness
+        {
+            get => _happiness;
+            set { _happiness = value; OnPropertyChanged(); }
+        }
 
-        public ObservableCollection<UserFood> UserFoods { get; set; }
+        public ObservableCollection<UserFoodItemViewModel> UserFoods { get; } =
+            new ObservableCollection<UserFoodItemViewModel>();
 
-        private UserFood _selectedFood;
-        public UserFood SelectedFood
+        private UserFoodItemViewModel _selectedFood;
+        public UserFoodItemViewModel SelectedFood
         {
             get => _selectedFood;
             set
@@ -63,9 +116,11 @@ namespace OOP_Semester.ViewModels
             {
                 if (SelectedFood != null)
                 {
-                    if (value > SelectedFood.Quantity) value = (int)SelectedFood.Quantity;
+                    if (value > SelectedFood.Quantity) value = SelectedFood.Quantity;
                     if (value < 1) value = 1;
                 }
+
+                if (_feedingQuantity == value) return;
                 _feedingQuantity = value;
                 OnPropertyChanged();
                 CommandManager.InvalidateRequerySuggested();
@@ -73,10 +128,15 @@ namespace OOP_Semester.ViewModels
         }
 
         private bool _isChangePetVisible;
-        public bool IsChangePetVisible { get => _isChangePetVisible; set { _isChangePetVisible = value; OnPropertyChanged(); } }
-        public ObservableCollection<PetType> AvailablePetTypes { get; set; }
+        public bool IsChangePetVisible
+        {
+            get => _isChangePetVisible;
+            set { _isChangePetVisible = value; OnPropertyChanged(); }
+        }
 
-        // --- COMMANDS ---
+        public ObservableCollection<PetType> AvailablePetTypes { get; } =
+            new ObservableCollection<PetType>();
+
         public ICommand FeedPetCommand { get; }
         public ICommand IncreaseQuantityCommand { get; }
         public ICommand DecreaseQuantityCommand { get; }
@@ -84,42 +144,49 @@ namespace OOP_Semester.ViewModels
         public ICommand CloseChangePetCommand { get; }
         public ICommand SelectPetTypeCommand { get; }
 
-        // --- CONSTRUCTOR ---
         public FeedingViewModel(User user)
         {
             _context = new AppDbContext();
             _currentUser = user;
-            UserFoods = new ObservableCollection<UserFood>();
-            AvailablePetTypes = new ObservableCollection<PetType>();
+
+            // ✅ chỉ subscribe 1 lần (tránh bị reload 2 lần)
+            GlobalChangeHub.InventoryChanged += OnGlobalInventoryChanged;
 
             LoadData();
 
-            FeedPetCommand = new RelayCommand(ExecuteFeed, CanFeed);
-            IncreaseQuantityCommand = new RelayCommand(_ => FeedingQuantity++);
-            DecreaseQuantityCommand = new RelayCommand(_ => FeedingQuantity--);
+            FeedPetCommand = new RelayCommand(ExecuteFeed, _ => CanFeed());
+            IncreaseQuantityCommand = new RelayCommand(_ => FeedingQuantity++,
+                _ => SelectedFood != null && FeedingQuantity < SelectedFood.Quantity);
+            DecreaseQuantityCommand = new RelayCommand(_ => FeedingQuantity--,
+                _ => SelectedFood != null && FeedingQuantity > 1);
+
             OpenChangePetCommand = new RelayCommand(ExecuteOpenChangePet);
             CloseChangePetCommand = new RelayCommand(_ => IsChangePetVisible = false);
             SelectPetTypeCommand = new RelayCommand(ExecuteSelectPetType);
         }
 
+        private void OnGlobalInventoryChanged(object sender)
+        {
+            if (ReferenceEquals(sender, this)) return;
+            ReloadInventoryPreserveSelection();
+        }
+
         public void LoadData()
         {
-            // 1. Kiểm tra an toàn: Nếu user null thì dừng ngay, không chạy LINQ
             if (_currentUser == null) return;
 
             try
             {
-                // 2. Load Pet từ Database
+                // đọc pet
                 CurrentPet = _context.Pets.FirstOrDefault(p => p.UserID == _currentUser.UserID);
 
-                // Nếu chưa có Pet -> Tạo Pet mặc định (Tránh lỗi Null khi tính toán sau này)
                 if (CurrentPet == null)
                 {
                     CurrentPet = new Pet
                     {
                         UserID = _currentUser.UserID,
                         Name = "Pet Mới",
-                        PetTypeID = 1, // Đảm bảo ID này có trong bảng pettype
+                        PetTypeID = 1,
                         Level = 1,
                         Experience = 0,
                         LastFedDate = DateTime.Now
@@ -128,178 +195,217 @@ namespace OOP_Semester.ViewModels
                     _context.SaveChanges();
                 }
 
-                // 3. Cập nhật trạng thái (Hình ảnh, EXP...)
                 UpdatePetStatus();
-
-                // 4. Load kho đồ ăn (Refresh lại số lượng sau khi mua Shop)
-                ReloadInventory();
+                ReloadInventoryPreserveSelection();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi tải dữ liệu Pet: " + ex.Message);
             }
         }
-        // CÁCH MỚI (Đúng)
-        public void changeData()
+
+        private void ReloadInventoryPreserveSelection()
         {
-            // 1. Phải lấy dữ liệu mới nhất từ Database (Vì Shop vừa lưu vào đó)
-            var newData = _context.UserFoods
-                .AsNoTracking()
-                .Include(uf => uf.Food) // Nhớ Include để lấy tên/ảnh món ăn
+            int? selectedFoodId = SelectedFood?.FoodID;
+
+            _context.ChangeTracker.Clear();
+
+            var foods = _context.UserFoods.AsNoTracking()
+                .Include(uf => uf.Food)
                 .Where(uf => uf.UserID == _currentUser.UserID && uf.Quantity > 0)
                 .ToList();
 
-            // 2. Xóa sạch dữ liệu cũ trên giao diện
             UserFoods.Clear();
+            foreach (var entity in foods)
+                UserFoods.Add(new UserFoodItemViewModel(entity));
 
-            // 3. Đổ dữ liệu mới vào
-            foreach (var item in newData)
-            {
-                UserFoods.Add(item);
-            }
-
+            if (selectedFoodId.HasValue)
+                SelectedFood = UserFoods.FirstOrDefault(x => x.FoodID == selectedFoodId.Value);
         }
 
-        private void ReloadInventory()
-        {
-            var foods = _context.UserFoods.Include(uf => uf.Food)
-                .Where(uf => uf.UserID == _currentUser.UserID && uf.Quantity > 0).ToList();
-            UserFoods.Clear();
-            foreach (var item in foods) UserFoods.Add(item);
-        }
-
-        // --- LOGIC QUAN TRỌNG: CẬP NHẬT TRẠNG THÁI ---
         private void UpdatePetStatus()
         {
             if (CurrentPet == null) return;
 
-            // Load dữ liệu Type để tính toán
-            // Sử dụng AsNoTracking để đảm bảo dữ liệu mới nhất và không bị cache sai
             var allLevels = _context.PetTypes.AsNoTracking()
                 .Where(pt => pt.PetTypeID == CurrentPet.PetTypeID)
-                .OrderBy(pt => pt.Level).ToList();
+                .OrderBy(pt => pt.Level)
+                .ToList();
 
             var currentLvlInfo = allLevels.FirstOrDefault(x => x.Level == CurrentPet.Level);
             var nextLvlInfo = allLevels.FirstOrDefault(x => x.Level == CurrentPet.Level + 1);
 
-            // 1. Cập nhật Avatar và Đói/Vui
             if (currentLvlInfo != null)
             {
                 if (CurrentPet.LastFedDate.HasValue)
                 {
-                    double mins = (DateTime.Now - CurrentPet.LastFedDate.Value).TotalMinutes;
-                    Hunger = (int)Math.Min(100, (mins / 1440.0) * 100);
+                    var elapsed = DateTime.Now - CurrentPet.LastFedDate.Value;
+                    if (elapsed.TotalSeconds < 0) elapsed = TimeSpan.Zero;
+
+                    double ratio = elapsed.TotalDays / 1.0; // 1 ngày = đói 100%
+                    Hunger = (int)Math.Clamp(ratio * 100.0, 0.0, 100.0);
                 }
-                else Hunger = 100;
+                else
+                {
+                    Hunger = 100;
+                }
 
                 Happiness = 100 - Hunger;
-                PetAvatar = (Hunger > 50) ? currentLvlInfo.AppearanceWhenHungry : currentLvlInfo.AppearanceWhenHappy;
+
+                PetAvatar = (Hunger > 50)
+                    ? currentLvlInfo.AppearanceWhenHungry
+                    : currentLvlInfo.AppearanceWhenHappy;
             }
 
-            // 2. Cập nhật MaxExp chuẩn xác
             if (nextLvlInfo != null)
             {
-                // Có cấp tiếp theo -> Lấy ExpRequired của cấp đó làm mốc
                 MaxExp = nextLvlInfo.ExperienceRequired;
                 ExpDisplay = $"{CurrentPet.Experience} / {MaxExp} XP";
             }
             else
             {
-                // Đã Max cấp -> Hiển thị Full
-                MaxExp = 100;
-                CurrentPet.Experience = 100; // Force hiển thị full thanh
                 ExpDisplay = "MAX LEVEL";
             }
         }
 
-        private bool CanFeed(object obj) => SelectedFood != null && SelectedFood.Quantity >= FeedingQuantity;
+        private bool CanFeed()
+            => SelectedFood != null && SelectedFood.Quantity >= FeedingQuantity && FeedingQuantity >= 1;
 
         private void ExecuteFeed(object obj)
         {
-            if (!CanFeed(null)) return;
+            if (!CanFeed()) return;
 
-            // [FIX CRASH] Tách biệt logic xử lý data và giao diện
-            var foodItem = SelectedFood;
+            var selectedVm = SelectedFood;
             int qty = FeedingQuantity;
 
-            // 1. Tính toán Exp cộng thêm
-            int expGain = (foodItem.Food?.ExperiencePerUnit ?? 0) * qty;
-            CurrentPet.Experience += expGain;
-            CurrentPet.LastFedDate = DateTime.Now;
-
-            // 2. Logic Lên Cấp (Vòng lặp)
-            var allLevels = _context.PetTypes.AsNoTracking()
-                .Where(pt => pt.PetTypeID == CurrentPet.PetTypeID)
-                .OrderBy(pt => pt.Level).ToList();
-
-            bool leveledUp = false;
-            while (true)
-            {
-                // Tìm thông tin level TIẾP THEO
-                var nextLvl = allLevels.FirstOrDefault(x => x.Level == CurrentPet.Level + 1);
-
-                // Nếu không có level tiếp theo (Max) hoặc chưa đủ Exp -> Dừng
-                if (nextLvl == null || CurrentPet.Experience < nextLvl.ExperienceRequired) break;
-
-                // Lên cấp: Trừ Exp đã dùng và tăng Level
-                CurrentPet.Experience -= nextLvl.ExperienceRequired;
-                CurrentPet.Level++;
-                leveledUp = true;
-            }
-
-            if (leveledUp) MessageBox.Show($"Level Up! {CurrentPet.Name} đã đạt cấp {CurrentPet.Level}!");
-
-            // 3. Cập nhật số lượng tồn kho (DB)
-            foodItem.Quantity -= qty;
-
-            // 4. LƯU XUỐNG DB TRƯỚC (Quan trọng)
             try
             {
-                if (foodItem.Quantity > 0)
-                    _context.UserFoods.Update(foodItem);
-                else
-                    _context.UserFoods.Remove(foodItem); // Xóa khỏi DB nếu hết
+                // đọc fresh từ DB để tránh lệch do shop / view khác
+                _context.ChangeTracker.Clear();
 
-                _context.Pets.Update(CurrentPet);
+                var petEntity = _context.Pets.FirstOrDefault(p => p.UserID == _currentUser.UserID);
+                if (petEntity == null)
+                {
+                    MessageBox.Show("Không tìm thấy Pet.");
+                    LoadData();
+                    return;
+                }
+
+                var foodEntity = _context.UserFoods
+                    .Include(uf => uf.Food)
+                    .FirstOrDefault(uf => uf.UserID == _currentUser.UserID && uf.FoodID == selectedVm.FoodID);
+
+                if (foodEntity == null || foodEntity.Quantity <= 0)
+                {
+                    MessageBox.Show("Món ăn không còn trong kho.");
+                    ReloadInventoryPreserveSelection();
+                    return;
+                }
+
+                int available = (int)foodEntity.Quantity;
+                if (qty > available) qty = available;
+                if (qty <= 0) return;
+
+                int expGain = (foodEntity.Food?.ExperiencePerUnit ?? 0) * qty;
+
+                petEntity.Experience += expGain;
+                petEntity.LastFedDate = DateTime.Now;
+
+                var allLevels = _context.PetTypes.AsNoTracking()
+                    .Where(pt => pt.PetTypeID == petEntity.PetTypeID)
+                    .OrderBy(pt => pt.Level)
+                    .ToList();
+
+                bool leveledUp = false;
+                while (true)
+                {
+                    var nextLvl = allLevels.FirstOrDefault(x => x.Level == petEntity.Level + 1);
+                    if (nextLvl == null || petEntity.Experience < nextLvl.ExperienceRequired) break;
+
+                    petEntity.Experience -= nextLvl.ExperienceRequired;
+                    petEntity.Level++;
+                    leveledUp = true;
+                }
+
+                // trừ food
+                foodEntity.Quantity = available - qty;
+
+                if (foodEntity.Quantity > 0)
+                    _context.UserFoods.Update(foodEntity);
+                else
+                    _context.UserFoods.Remove(foodEntity);
+
+                _context.Pets.Update(petEntity);
                 _context.SaveChanges();
+
+                // ✅ Update UI ngay lập tức
+                selectedVm.Quantity = available - qty;
+                if (selectedVm.Quantity <= 0)
+                {
+                    UserFoods.Remove(selectedVm);
+                    SelectedFood = null;
+                }
+
+                CurrentPet = petEntity;
+                UpdatePetStatus();
+                FeedingQuantity = 1;
+
+                if (leveledUp)
+                    MessageBox.Show($"Level Up! {CurrentPet.Name} đã đạt cấp {CurrentPet.Level}!");
+
+                CommandManager.InvalidateRequerySuggested();
+
+                // ✅ broadcast cho view khác
+                GlobalChangeHub.RaisePetChanged(this);
+                GlobalChangeHub.RaiseInventoryChanged(this);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi lưu dữ liệu: " + ex.Message);
-                return;
+                MessageBox.Show("Lỗi khi cho ăn: " + ex.Message);
             }
-
-            // 5. CẬP NHẬT GIAO DIỆN SAU CÙNG (Để tránh crash)
-            if (foodItem.Quantity <= 0)
-            {
-                UserFoods.Remove(foodItem); // Xóa khỏi ListBox
-                SelectedFood = null;        // Reset chọn
-            }
-
-            UpdatePetStatus();
-            FeedingQuantity = 1;
-            CommandManager.InvalidateRequerySuggested();
         }
 
-        // --- Logic Đổi Pet giữ nguyên ---
         private void ExecuteOpenChangePet(object obj)
         {
-            var pets = _context.PetTypes.AsNoTracking().Where(pt => pt.Level == CurrentPet.Level).ToList();
+            var pets = _context.PetTypes.AsNoTracking()
+                .Where(pt => pt.Level == 1)
+                .ToList();
+
             AvailablePetTypes.Clear();
             foreach (var p in pets) AvailablePetTypes.Add(p);
+
             IsChangePetVisible = true;
         }
 
         private void ExecuteSelectPetType(object obj)
         {
-            if (obj is PetType newType)
+            if (obj is not PetType newType) return;
+            if (CurrentPet == null) return;
+
+            try
             {
                 CurrentPet.PetTypeID = newType.PetTypeID;
+
                 _context.Pets.Update(CurrentPet);
                 _context.SaveChanges();
+
                 UpdatePetStatus();
                 IsChangePetVisible = false;
+
+                GlobalChangeHub.RaisePetChanged(this);
+
+                MessageBox.Show("Đã đổi thú cưng thành công!");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi đổi thú cưng: " + ex.Message);
+            }
+        }
+
+        public void Dispose()
+        {
+            GlobalChangeHub.InventoryChanged -= OnGlobalInventoryChanged;
+            _context?.Dispose();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

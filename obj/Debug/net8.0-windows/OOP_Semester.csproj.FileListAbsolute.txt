@@ -57,3 +57,17 @@ D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\HabitMonthWindow.g.cs
 D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\App.baml
 D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\HabitView.baml
 D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\HabitView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\ChallengeView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\ChallengeView.baml
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\AdminView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\AdminView.baml
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\DailyReportView.baml
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\DailyReportView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\GoldTransactionReportView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\GoldTransactionReportView.baml
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\HabitHistoryWindow.baml
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\HabitHistoryWindow.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\AdChallengeReportView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\AdUserReportView.g.cs
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\AdChallengeReportView.baml
+D:\OOP\OOP_Semester\obj\Debug\net8.0-windows\Views\Report\AdUserReportView.baml

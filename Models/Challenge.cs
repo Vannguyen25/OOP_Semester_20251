@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OOP_Semester.Models
 {
@@ -15,19 +12,16 @@ namespace OOP_Semester.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ChallengesID { get; set; }
 
-        // "varchar(100)" -> Giới hạn độ dài chuỗi là 100
-        [StringLength(100)]
-        public string? Title { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
 
-        // "text" -> Lưu chuỗi dài thoải mái
-        public string? Description { get; set; }
-
-        // "date" -> Dùng DateTime (hoặc DateOnly trong .NET 6+)
-        // Anh để nullable (?) để lỡ chưa có ngày bắt đầu/kết thúc thì không bị lỗi
-        [DataType(DataType.Date)]
+        // Có thể bạn đang để DateTime? (nullable). Nếu là DateTime thường thì không sao.
         public DateTime? StartDate { get; set; }
-
-        [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
+
+        public int RewardCoins { get; set; }
+
+        // --- 👇 BỔ SUNG DÒNG NÀY ĐỂ SỬA LỖI "does not contain definition for ChallengeTasks" 👇 ---
+        public virtual ICollection<ChallengeTask> ChallengeTasks { get; set; } = new List<ChallengeTask>();
     }
 }

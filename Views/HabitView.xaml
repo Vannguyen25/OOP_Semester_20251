@@ -252,7 +252,22 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="30">
                         <StackPanel>
                             <Grid Margin="0,0,0,20">
-                                <TextBlock Text="Thêm Thói quen Mới" FontSize="22" FontWeight="Bold"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Thêm Thói quen Mới" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    <Button Command="{Binding OpenTemplateLibraryCommand}" Margin="15,0,0,0"
+                                            Background="#FFF7ED" BorderBrush="#FFEDD5" BorderThickness="1" 
+                                            Padding="12,6" Cursor="Hand" Style="{StaticResource RoundedButtonStyle}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="📚" Margin="0,0,6,0"/>
+                                            <TextBlock Text="Chọn từ mẫu" Foreground="{StaticResource Primary}" FontWeight="SemiBold"/>
+                                        </StackPanel>
+                                        <Button.Resources>
+                                            <Style TargetType="Border">
+                                                <Setter Property="CornerRadius" Value="20"/>
+                                            </Style>
+                                        </Button.Resources>
+                                    </Button>
+                                </StackPanel>
                                 <Button HorizontalAlignment="Right" Content="✕" Style="{StaticResource CircleBtn}" Command="{Binding CancelCommand}" Foreground="{StaticResource TextMuted}" FontSize="16"/>
                             </Grid>
 
@@ -286,19 +301,14 @@
 
                                 <StackPanel Grid.Column="1" Margin="10,0,0,0">
                                     <TextBlock Text="Màu sắc" FontWeight="SemiBold" Margin="0,0,0,6"/>
-
                                     <Border BorderBrush="{StaticResource BorderBrushSoft}" BorderThickness="1" CornerRadius="12" Padding="8" Height="93">
-                                        <ListBox ItemsSource="{Binding AvailableColors}" 
-                 SelectedValue="{Binding SelectedColorHex}"
-                 BorderThickness="0" Background="Transparent"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-
+                                        <ListBox ItemsSource="{Binding AvailableColors}" SelectedValue="{Binding SelectedColorHex}"
+                                                 BorderThickness="0" Background="Transparent" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                             <ListBox.ItemsPanel>
                                                 <ItemsPanelTemplate>
                                                     <WrapPanel Orientation="Horizontal" Width="180"/>
                                                 </ItemsPanelTemplate>
                                             </ListBox.ItemsPanel>
-
                                             <ListBox.ItemContainerStyle>
                                                 <Style TargetType="ListBoxItem">
                                                     <Setter Property="Cursor" Value="Hand"/>
@@ -308,18 +318,11 @@
                                                         <Setter.Value>
                                                             <ControlTemplate TargetType="ListBoxItem">
                                                                 <Grid>
-                                                                    <Ellipse x:Name="SelectionRing" Width="38" Height="38" 
-                                             Stroke="#9CA3AF" StrokeThickness="2" 
-                                             Visibility="Collapsed"/>
-
+                                                                    <Ellipse x:Name="SelectionRing" Width="38" Height="38" Stroke="#9CA3AF" StrokeThickness="2" Visibility="Collapsed"/>
                                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                                 </Grid>
-
                                                                 <ControlTemplate.Triggers>
                                                                     <Trigger Property="IsSelected" Value="True">
-                                                                        <Setter TargetName="SelectionRing" Property="Visibility" Value="Visible"/>
-                                                                    </Trigger>
-                                                                    <Trigger Property="IsMouseOver" Value="True">
                                                                         <Setter TargetName="SelectionRing" Property="Visibility" Value="Visible"/>
                                                                         <Setter TargetName="SelectionRing" Property="Opacity" Value="0.5"/>
                                                                     </Trigger>
@@ -329,7 +332,6 @@
                                                     </Setter>
                                                 </Style>
                                             </ListBox.ItemContainerStyle>
-
                                             <ListBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <Border Width="30" Height="30" CornerRadius="15" Background="{Binding}">
@@ -403,7 +405,6 @@
 
                             <StackPanel Margin="0,25,0,0">
                                 <TextBlock Text="Cài đặt Nhắc nhở" FontWeight="SemiBold" Margin="0,0,0,10"/>
-
                                 <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
                                     <RadioButton Content="Theo buổi" GroupName="ReminderType" IsChecked="{Binding IsReminderBySession}" Style="{StaticResource PillRadioButton}"/>
                                     <RadioButton Content="Giờ cố định" GroupName="ReminderType" IsChecked="{Binding IsReminderByTime}" Style="{StaticResource PillRadioButton}"/>
@@ -424,9 +425,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <TextBox Style="{StaticResource ModernInputStyle}" Text="{Binding ReminderInput}" Tag="VD: 06:30"/>
-                                        <Button Grid.Column="1" Content="Thêm" Margin="10,0,0,0" 
-                                                Command="{Binding AddReminderCommand}"
-                                                Style="{StaticResource RoundedButtonStyle}"/>
+                                        <Button Grid.Column="1" Content="Thêm" Margin="10,0,0,0" Command="{Binding AddReminderCommand}" Style="{StaticResource RoundedButtonStyle}"/>
                                     </Grid>
                                     <ItemsControl ItemsSource="{Binding ReminderTimes}" Margin="0,10,0,0">
                                         <ItemsControl.ItemsPanel>
@@ -452,13 +451,85 @@
 
                             <Grid Margin="0,30,0,0">
                                 <Button Content="Hủy bỏ" HorizontalAlignment="Left" Background="Transparent" Foreground="{StaticResource TextMuted}" BorderThickness="0" Command="{Binding CancelCommand}"/>
-                                <Button Content="Lưu Thói Quen" HorizontalAlignment="Right" Width="150" Height="45"
-                                        Command="{Binding SaveCommand}"
-                                        Style="{StaticResource RoundedButtonStyle}"/>
+                                <Button Content="Lưu Thói Quen" HorizontalAlignment="Right" Width="150" Height="45" Command="{Binding SaveCommand}" Style="{StaticResource RoundedButtonStyle}"/>
                             </Grid>
-
                         </StackPanel>
                     </ScrollViewer>
+
+                    <Grid Visibility="{Binding IsTemplatePopupVisible, Converter={StaticResource BoolToVis}}" Background="#66000000">
+                        <Border Background="White" Width="650" Height="550" CornerRadius="16" Effect="{StaticResource CardShadow}" Padding="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" BorderBrush="{StaticResource BorderBrushSoft}" BorderThickness="0,0,0,1" Padding="20">
+                                    <Grid>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Border Background="#FFF7ED" CornerRadius="8" Padding="8">
+                                                <TextBlock Text="📚" FontSize="18"/>
+                                            </Border>
+                                            <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
+                                                <TextBlock Text="Thư viện mẫu" FontWeight="Bold" FontSize="18"/>
+                                                <TextBlock Text="Chọn thói quen để bắt đầu nhanh" FontSize="13" Foreground="{StaticResource TextMuted}"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                        <Button Command="{Binding CloseTemplateLibraryCommand}" Content="✕" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                                Background="Transparent" BorderThickness="0" FontSize="18" Foreground="{StaticResource TextMuted}" Cursor="Hand"/>
+                                    </Grid>
+                                </Border>
+
+                                <ScrollViewer Grid.Row="1" Padding="20">
+                                    <ItemsControl ItemsSource="{Binding Templates}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Background="White" BorderBrush="{StaticResource BorderBrushSoft}" BorderThickness="1" CornerRadius="12" Padding="15" Margin="0,0,0,12" Cursor="Hand">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <Border Grid.Column="0" Width="50" Height="50" CornerRadius="12" Background="#F8FAFC">
+                                                            <TextBlock Text="{Binding IconCode}" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+
+                                                        <StackPanel Grid.Column="1" Margin="15,0" VerticalAlignment="Center">
+                                                            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="16" Foreground="{StaticResource TextDark}"/>
+                                                            <TextBlock Text="{Binding Description}" FontSize="13" Foreground="{StaticResource TextMuted}" TextTrimming="CharacterEllipsis" Margin="0,2,0,0"/>
+                                                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                                                <Border Background="#F3F4F6" CornerRadius="4" Padding="6,2" Margin="0,0,8,0">
+                                                                    <TextBlock FontSize="12">
+                                                                        <Run Text="🎯 "/>
+                                                                        <Run Text="{Binding DefaultGoalValuePerDay, StringFormat='{}{0:0.##}'}" FontWeight="SemiBold"/>
+                                                                        <Run Text=" "/>
+                                                                        <Run Text="{Binding DefaultGoalUnitName}"/>
+                                                                    </TextBlock>
+                                                                </Border>
+                                                            </StackPanel>
+                                                        </StackPanel>
+
+                                                        <Button Grid.Column="2" Command="{Binding DataContext.ApplyTemplateCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" 
+                                                                CommandParameter="{Binding}"
+                                                                Content="Sử dụng" Background="Transparent" Foreground="{StaticResource Primary}" FontWeight="Bold"
+                                                                Padding="12,6" BorderBrush="{StaticResource Primary}" BorderThickness="1" Cursor="Hand">
+                                                            <Button.Resources>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="CornerRadius" Value="8"/>
+                                                                </Style>
+                                                            </Button.Resources>
+                                                        </Button>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </Grid>
             </Grid>
         </Border>

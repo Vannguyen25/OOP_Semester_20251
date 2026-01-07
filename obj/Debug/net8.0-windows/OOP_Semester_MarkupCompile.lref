@@ -1,10 +1,13 @@
 ﻿
 FD:\OOP\OOP_Semester\App.xaml;;
+FD:\OOP\OOP_Semester\Views\AdminView.xaml;;
+FD:\OOP\OOP_Semester\Views\ChallengeView.xaml;;
 FD:\OOP\OOP_Semester\Views\FeedingView.xaml;;
+FD:\OOP\OOP_Semester\Views\HabitView.xaml;;
 FD:\OOP\OOP_Semester\Views\HomeView.xaml;;
 FD:\OOP\OOP_Semester\Views\MainWindow.xaml;;
 FD:\OOP\OOP_Semester\Views\NotifyView.xaml;;
 FD:\OOP\OOP_Semester\Views\SettingView.xaml;;
 FD:\OOP\OOP_Semester\Views\StatisticView.xaml;;
-FD:\OOP\OOP_Semester\Views\HabitView.xaml;;
+FD:\OOP\OOP_Semester\Views\Report\GoldTransactionReportView.xaml;;
 

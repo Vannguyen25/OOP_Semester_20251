@@ -25,7 +25,7 @@ namespace OOP_Semester.Models
         [StringLength(50)]
         public string? Status { get; set; } = "Happy";
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime? LastFedDate { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

@@ -66,5 +66,7 @@ namespace OOP_Semester.Models
 
         [ForeignKey("CategoryID")]
         public virtual HabitCategory? Category { get; set; }
+        // Trong file Models/Habit.cs
+        public virtual RepeatDay? RepeatDay { get; set; }
     }
 }

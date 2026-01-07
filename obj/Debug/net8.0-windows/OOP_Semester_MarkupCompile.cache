@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 D:\OOP\OOP_Semester\App.xaml
-11-609659008
+18-1781968078
 
-51-1222534534
+70331831545
 2121902270034
-Views\AuthView.xaml;Views\FeedingView.xaml;Views\HabitMonthWindow.xaml;Views\HabitView.xaml;Views\HomeView.xaml;Views\MainWindow.xaml;Views\NotifyView.xaml;Views\SettingView.xaml;Views\ShopView.xaml;Views\StatisticView.xaml;Views\TodayView.xaml;
+Views\AdminView.xaml;Views\AuthView.xaml;Views\ChallengeView.xaml;Views\FeedingView.xaml;Views\HabitMonthWindow.xaml;Views\HabitView.xaml;Views\HomeView.xaml;Views\MainWindow.xaml;Views\NotifyView.xaml;Views\Report\AdChallengeReportView.xaml;Views\Report\AdUserReportView.xaml;Views\Report\DailyReportView.xaml;Views\Report\GoldTransactionReportView.xaml;Views\Report\HabitHistoryWindow.xaml;Views\SettingView.xaml;Views\ShopView.xaml;Views\StatisticView.xaml;Views\TodayView.xaml;
 
 False
 

@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OOP_Semester.Models
 {
-    [Table("tasks")] // Map vào bảng tasks trong DB
+    [Table("tasks")]
     public class ChallengeTask
     {
         [Key]
@@ -14,12 +15,14 @@ namespace OOP_Semester.Models
 
         public string? Description { get; set; }
 
-        // Enum -> string
         [StringLength(50)]
-        public string? DailySession { get; set; }
+        public string? DailySession { get; set; } = "Anytime";
 
-        // --- Navigation Property ---
         [ForeignKey("ChallengesID")]
         public virtual Challenge? Challenges { get; set; }
+
+        // --- [QUAN TRỌNG] Thêm dòng này để fix lỗi chọn RadioButton ---
+        [NotMapped]
+        public Guid TempGroupId { get; } = Guid.NewGuid();
     }
 }

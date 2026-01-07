@@ -8,7 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1000"
              FontFamily="Segoe UI">
-
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type vm:TodayViewModel}">
             <v:TodayView />
@@ -28,6 +27,18 @@
         <DataTemplate DataType="{x:Type vm:NotifyViewModel}">
             <v:NotifyView />
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:StatisticViewModel}">
+            <v:StatisticView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ChallengeViewModel}">
+            <v:ChallengeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AdminViewModel}">
+            <v:AdminView />
+        </DataTemplate>
+
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+
         <Style x:Key="MenuButtonStyle" TargetType="RadioButton">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="#757564"/>
@@ -56,7 +67,6 @@
                                 <Setter TargetName="border" Property="Background" Value="#FFF8E1"/>
                                 <Setter Property="Foreground" Value="#f58634"/>
                             </MultiTrigger>
-
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#f58634"/>
                                 <Setter Property="Foreground" Value="White"/>
@@ -95,57 +105,138 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
-                    <RadioButton Content="Hôm nay" Tag="📅" Style="{StaticResource MenuButtonStyle}" IsChecked="True" Command="{Binding NavigateCommand}" CommandParameter="Today" />
-                    <RadioButton Content="Thói quen" Tag="📝" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Habits"/>
-                    <RadioButton Content="Thử thách" Tag="🏆" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Challenges"/>
-                    <RadioButton Content="Thú cưng" Tag="🐶" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Pet"/>
-                    <RadioButton Content="Cửa hàng" Tag="🛍️" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Shop"/>
-                    <RadioButton Content="Thống kê" Tag="📊" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Statistics"/>
-                    <RadioButton Content="Thông báo" Tag="🔔" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Notify" />
+                    <RadioButton Content="Quản trị" Tag="🛡️" Command="{Binding NavigateCommand}" CommandParameter="Administrator"
+                                 Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Administrator">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Hôm nay" Tag="📅" Command="{Binding NavigateCommand}" CommandParameter="Today">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Today">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Thói quen" Tag="📝" Command="{Binding NavigateCommand}" CommandParameter="Habits">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Habits">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Thử thách" Tag="🏆" Command="{Binding NavigateCommand}" CommandParameter="Challenges">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Challenges">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Thú cưng" Tag="🐶" Command="{Binding NavigateCommand}" CommandParameter="Pet">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Pet">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Cửa hàng" Tag="🛍️" Command="{Binding NavigateCommand}" CommandParameter="Shop">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Shop">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Thống kê" Tag="📊" Command="{Binding NavigateCommand}" CommandParameter="Statistics">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Statistics">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
+
+                    <RadioButton Content="Thông báo" Tag="🔔" Command="{Binding NavigateCommand}" CommandParameter="Notify">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Notify">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
                 </StackPanel>
 
                 <StackPanel Grid.Row="2">
-                    <RadioButton Content="Cài đặt" Tag="⚙️" Style="{StaticResource MenuButtonStyle}" Command="{Binding NavigateCommand}" CommandParameter="Settings"/>
+                    <RadioButton Content="Cài đặt" Tag="⚙️" Command="{Binding NavigateCommand}" CommandParameter="Settings">
+                        <RadioButton.Style>
+                            <Style TargetType="RadioButton" BasedOn="{StaticResource MenuButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActiveTab}" Value="Settings">
+                                        <Setter Property="IsChecked" Value="True"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </RadioButton.Style>
+                    </RadioButton>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <Grid Grid.Column="1" Background="#f8f8f5">
+        <Grid Grid.Column="1" Background="#f8f8f5" Margin="0,0,-75,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <ToggleButton x:Name="MenuToggleButton"
-                          Grid.Row="0"
-                          Width="20" Height="20"
-                          HorizontalAlignment="Left"
-                          Margin="30,5,0,5"
-                          Background="Transparent"
-                          BorderThickness="0"
-                          Cursor="Hand"
-                          Click="MenuToggleButton_Click">
+            <ToggleButton x:Name="MenuToggleButton" Grid.Row="0" Width="30" Height="30" HorizontalAlignment="Left" Margin="20,5"
+                          Background="Transparent" BorderThickness="0" Cursor="Hand" Click="MenuToggleButton_Click">
                 <ToggleButton.Template>
                     <ControlTemplate TargetType="ToggleButton">
                         <Border Background="{TemplateBinding Background}" CornerRadius="8">
-                            <Path Data="M0,6 H20 M0,12 H20 M0,18 H20"
-                                  Stroke="#1c1c0d" 
-                                  StrokeThickness="2"
-                                  VerticalAlignment="Center"
-                                  HorizontalAlignment="Center"/>
+                            <Path Data="M0,6 H20 M0,12 H20 M0,18 H20" Stroke="#1c1c0d" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E0E0E0"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </ToggleButton.Template>
             </ToggleButton>
+            <ContentControl Grid.Row="1" Content="{Binding CurrentView}" Margin="15"/>
 
-            <ContentControl Grid.Row="1" 
-                            Content="{Binding CurrentView}" 
-                            Margin="5,5,5,5"/>
         </Grid>
     </Grid>
 </UserControl>

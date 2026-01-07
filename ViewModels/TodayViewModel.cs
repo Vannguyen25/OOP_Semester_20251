@@ -6,10 +6,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using static OOP_Semester.ViewModels.GlobalChangeHub;
 
 namespace OOP_Semester.ViewModels
 {
-    // --- CÁC CLASS PHỤ (Model hiển thị) ---
     public class HabitItemDisplay : ViewModelBase
     {
         public int HabitID { get; set; }
@@ -92,12 +92,10 @@ namespace OOP_Semester.ViewModels
         public bool IsSelected { get => _isSelected; set => SetProperty(ref _isSelected, value); }
     }
 
-    // --- MAIN VIEWMODEL ---
     public class TodayViewModel : ViewModelBase
     {
-        private readonly User? _user; // User nhận từ input
+        private readonly User? _user;
 
-        // --- 1. Pet Stats & Header ---
         private double _hungerPercent;
         public double HungerPercent { get => _hungerPercent; set => SetProperty(ref _hungerPercent, value); }
 
@@ -119,18 +117,14 @@ namespace OOP_Semester.ViewModels
         private int _coins;
         public int Coins { get => _coins; set => SetProperty(ref _coins, value); }
 
-        // --- 2. Pet Info ---
         private Pet? _currentPet;
         public Pet? CurrentPet { get => _currentPet; set { if (SetProperty(ref _currentPet, value)) { OnPropertyChanged(nameof(CurrentPetImage)); OnPropertyChanged(nameof(CurrentPetLevelStatus)); } } }
-
+        
         public string CurrentPetImage
         {
             get
             {
                 if (CurrentPet?.PetType == null) return "/Images/Pet/default.png";
-
-                // Logic hiển thị ảnh dựa trên Status vừa tính toán ở trên
-                // Nếu Status là Hungry (do Hunger > 50%) -> Lấy ảnh đói
                 string path = (CurrentPet.Status == "Hungry")
                     ? CurrentPet.PetType.AppearanceWhenHungry
                     : CurrentPet.PetType.AppearanceWhenHappy;
@@ -141,7 +135,6 @@ namespace OOP_Semester.ViewModels
 
         public string CurrentPetLevelStatus => CurrentPet == null ? "Chưa có thú cưng" : $"Level {CurrentPet.Level} • {CurrentPet.Status}";
 
-        // --- 3. Challenge (Thử thách) ---
         private string _challengeName = "Đang tải...";
         public string ChallengeName { get => _challengeName; set => SetProperty(ref _challengeName, value); }
 
@@ -151,7 +144,6 @@ namespace OOP_Semester.ViewModels
         private int _challengePercent;
         public int ChallengePercent { get => _challengePercent; set => SetProperty(ref _challengePercent, value); }
 
-        // --- 4. Collections ---
         public ObservableCollection<HabitItemDisplay> Habits { get; set; } = new();
         public ObservableCollection<WeekDayDisplay> WeekDays { get; } = new();
 
@@ -171,7 +163,6 @@ namespace OOP_Semester.ViewModels
         private string _weekTitle = "";
         public string WeekTitle { get => _weekTitle; set => SetProperty(ref _weekTitle, value); }
 
-        // --- Commands ---
         public ICommand CompleteHabitCommand { get; private set; }
         public ICommand AddOneCommand { get; private set; }
         public ICommand AddHalfCommand { get; private set; }
@@ -182,6 +173,7 @@ namespace OOP_Semester.ViewModels
         public ICommand SkipHabitCommand { get; private set; }
         public ICommand DeleteHabitCommand { get; private set; }
         public ICommand OpenHabitMonthCommand { get; private set; }
+        public ICommand ContinueChallengeCommand{ get; private set; }
 
         public TodayViewModel()
         {
@@ -199,12 +191,152 @@ namespace OOP_Semester.ViewModels
             if (_user != null)
             {
                 Coins = _user.GoldAmount ?? 0;
+
+                GlobalChangeHub.CoinsChanged += OnGlobalCoinsChanged;
+                GlobalChangeHub.PetChanged += OnGlobalPetChanged;
+                GlobalChangeHub.DisplayNameChanged += OnGlobalDisplayNameChanged;
+                GlobalChangeHub.GoldChanged += OnGlobalGoldChanged;
+
                 UpdateGreeting();
+
+                UpdateStreakFromYesterday_OncePerDay(); // ✅ CHỈ CHẠY Ở CTOR
+
                 Reload();
             }
         }
+        private void UpdateStreakFromYesterday_OncePerDay()
+        {
+            if (_user == null) return;
 
-        // --- SETUP COMMANDS ---
+            var today = DateTime.Today;
+            var yesterday = today.AddDays(-1);
+
+            using var context = new AppDbContext();
+
+            // Lấy danh sách habit còn hạn ở "hôm qua"
+            var habits = context.Habits
+                .Where(h => h.UserID == _user.UserID
+                            && (h.Status == null || h.Status == "Active")
+                            && h.StartDate.Date <= yesterday.Date
+                            && (!h.UseEndCondition || h.EndDate == null || h.EndDate.Value.Date >= yesterday.Date))
+                .ToList();
+
+            if (habits.Count == 0) return;
+
+            // Lấy repeat map để check habit có chạy vào ngày hôm qua không
+            var ids = habits.Select(h => h.HabitID).ToList();
+            var repeatMap = context.RepeatDays
+                .Where(r => ids.Contains(r.HabitID))
+                .ToList()
+                .ToDictionary(r => r.HabitID, r => r);
+
+            bool IsOnYesterday(Habit h)
+            {
+                if (h.RepeatEveryday) return true;
+                if (!repeatMap.TryGetValue(h.HabitID, out var r)) return false;
+                var prev = h.LastStreakDate?.Date;
+                if (prev.HasValue && prev.Value < yesterday.AddDays(-1).Date)
+                {
+                    if (h.CurrentStreak > h.BestStreak) h.BestStreak = h.CurrentStreak;
+                    h.CurrentStreak = 0;
+                }
+                return yesterday.DayOfWeek switch
+                {
+                    DayOfWeek.Monday => r.Mon,
+                    DayOfWeek.Tuesday => r.Tue,
+                    DayOfWeek.Wednesday => r.Wed,
+                    DayOfWeek.Thursday => r.Thu,
+                    DayOfWeek.Friday => r.Fri,
+                    DayOfWeek.Saturday => r.Sat,
+                    DayOfWeek.Sunday => r.Sun,
+                    _ => false
+                };
+            }
+
+            var dueHabits = habits.Where(IsOnYesterday).ToList();
+            if (dueHabits.Count == 0) return;
+
+            // Lấy log của ngày hôm qua cho các habit đó
+            var dueIds = dueHabits.Select(h => h.HabitID).ToList();
+            var logs = context.HabitLogs
+                .Where(l => dueIds.Contains(l.HabitID) && l.LogDate.Date == yesterday.Date)
+                .ToList()
+                .ToDictionary(l => l.HabitID);
+
+            foreach (var h in dueHabits)
+            {
+                // ✅ Nếu đã xử lý streak cho hôm qua rồi thì bỏ qua (mở app lần 2 trong ngày)
+                if (h.LastStreakDate.HasValue && h.LastStreakDate.Value.Date == yesterday.Date)
+                    continue;
+
+                logs.TryGetValue(h.HabitID, out var log);
+
+                // 1) Nếu SKIP -> giữ nguyên hiện trạng, chỉ đánh dấu đã xử lý
+                if (log != null && log.Skipped)
+                {
+                    h.LastStreakDate = yesterday;
+                    continue;
+                }
+
+                // 2) Nếu COMPLETED -> tăng streak + cập nhật best + đánh dấu đã xử lý
+                if (log != null && log.Completed)
+                {
+                    // nếu liền mạch với last streak date cũ thì +1, không thì reset về 1
+                    var prev = h.LastStreakDate?.Date;
+                    if (prev.HasValue && prev.Value == yesterday.AddDays(-1).Date)
+                        h.CurrentStreak += 1;
+                    else
+                        h.CurrentStreak = 1;
+
+                    if (h.CurrentStreak > h.BestStreak)
+                        h.BestStreak = h.CurrentStreak;
+
+                    h.LastStreakDate = yesterday;
+                    continue;
+                }
+
+                // 3) Không completed (và không skip) -> chốt best rồi reset current về 0, đánh dấu đã xử lý
+                if (h.CurrentStreak > h.BestStreak)
+                    h.BestStreak = h.CurrentStreak;
+
+                h.CurrentStreak = 0;
+                h.LastStreakDate = yesterday;
+            }
+
+            context.SaveChanges();
+        }
+
+        private void OnGlobalGoldChanged(object sender, int newGold)
+        {
+            if (ReferenceEquals(sender, this)) return;
+
+            Coins = newGold;
+            if (_user != null) _user.GoldAmount = newGold;
+        }
+
+        private void OnGlobalPetChanged(object sender)
+        {
+            if (ReferenceEquals(sender, this)) return;
+            LoadPetStats();
+        }
+
+        private void OnGlobalCoinsChanged(object sender, int newCoins)
+        {
+            if (_user == null) return;
+            if (ReferenceEquals(sender, this)) return;
+
+            _user.GoldAmount = newCoins;
+            Coins = newCoins;
+        }
+
+   
+
+        private void OnGlobalDisplayNameChanged(object sender, string? _)
+        {
+            if (_user == null) return;
+            UpdateGreeting();
+        }
+
         private void InitializeCommands()
         {
             CompleteHabitCommand = new RelayCommand(obj => { if (obj is HabitItemDisplay item) ToggleCompleteAndSave(item); });
@@ -236,7 +368,6 @@ namespace OOP_Semester.ViewModels
                     {
                         if (item.IsSkipped) item.IsSkipped = false;
 
-                        // 🔥 LOGIC VÀNG: Nếu chưa hoàn thành thì mới cộng vàng
                         if (!item.IsCompleted) UpdateUserGold(2);
 
                         item.CurrentCount = item.TargetCount;
@@ -256,9 +387,10 @@ namespace OOP_Semester.ViewModels
             SkipHabitCommand = new RelayCommand(obj => { if (obj is HabitItemDisplay item) ToggleSkipAndSave(item); });
             DeleteHabitCommand = new RelayCommand(obj => { if (obj is HabitItemDisplay item) DeleteHabit(item); });
             OpenHabitMonthCommand = new RelayCommand(obj => { if (obj is HabitItemDisplay item) OpenHabitMonth(item.HabitID); });
+            ContinueChallengeCommand = new RelayCommand( obj => { NavigationHub.NavigateTo("Challenge"); }) ; 
+            
         }
 
-        // --- LOGIC LOADING DATA ---
         public void Reload()
         {
             BuildWeekDays(SelectedDate);
@@ -305,12 +437,10 @@ namespace OOP_Semester.ViewModels
             }
         }
 
-        // ✅ LOGIC THÚ CƯNG (PET) - ĐÃ ĐỒNG BỘ VỚI FEEDING VIEW MODEL
         private void LoadPetStats()
         {
             using var context = new AppDbContext();
 
-            // 1. Lấy Pet Active và thông tin Level từ PetType
             var pet = context.Pets
                              .Include(p => p.PetType)
                              .FirstOrDefault(p => p.UserID == _user!.UserID && p.Status != "Inactive");
@@ -319,37 +449,24 @@ namespace OOP_Semester.ViewModels
             {
                 CurrentPet = pet;
 
-                // 2. Lấy thông tin Level hiện tại để lấy đúng ảnh (Dựa trên FeedingViewModel)
-                // Lưu ý: Cần query lại PetType nếu EF Core chưa load đủ list level (hoặc giả định PetType đã include đủ)
-                // Ở đây ta truy vấn lại bảng PetTypes để lấy đúng dòng ứng với Level hiện tại của Pet
-                var currentLvlInfo = context.PetTypes
-                    .FirstOrDefault(pt => pt.PetTypeID == pet.PetTypeID && pt.Level == pet.Level);
-
-                // 3. Tính toán Hunger/Happiness (Logic chuẩn: 1440 phút = 24h)
                 if (pet.LastFedDate.HasValue)
                 {
                     double mins = (DateTime.Now - pet.LastFedDate.Value).TotalMinutes;
-                    // Công thức: (Số phút trôi qua / 1440) * 100 -> Max là 100
-                    HungerPercent = (int) Math.Min(100, (mins / 1440.0) * 100);
+                    HungerPercent = (int)Math.Min(100, (mins / 1440.0) * 100);
                 }
                 else
                 {
-                    HungerPercent = 100; // Chưa ăn bao giờ -> Đói meo
+                    HungerPercent = 100;
                 }
 
-                // Happiness ngược lại với Hunger
                 HappinessPercent = 100 - HungerPercent;
 
-                // 4. Đổi màu thanh chỉ số
-                if (HungerPercent > 70) HungerColor = "#EF4444"; // Đỏ (Rất đói)
-                else if (HungerPercent > 30) HungerColor = "#F97316"; // Cam (Hơi đói)
-                else HungerColor = "#22C55E"; // Xanh (No)
+                if (HungerPercent > 70) HungerColor = "#EF4444";
+                else if (HungerPercent > 30) HungerColor = "#F97316";
+                else HungerColor = "#22C55E";
 
-                // 5. Cập nhật Status để Binding ảnh (Dùng logic > 50% là đói)
-                // Lưu ý: Cần cập nhật property Status của object Pet để View nhận diện
                 pet.Status = (HungerPercent > 50) ? "Hungry" : "Happy";
 
-                // 6. Kích hoạt cập nhật ảnh (Property CurrentPetImage sẽ tự tính toán lại dựa trên Status mới)
                 OnPropertyChanged(nameof(CurrentPetImage));
                 OnPropertyChanged(nameof(CurrentPetLevelStatus));
             }
@@ -360,7 +477,7 @@ namespace OOP_Semester.ViewModels
                 HappinessPercent = 0;
             }
         }
-        // --- LOGIC THÓI QUEN (HABIT) ---
+
         private void LoadHabitsForDate(DateTime date)
         {
             if (_user == null) return;
@@ -373,7 +490,7 @@ namespace OOP_Semester.ViewModels
                 .Where(h => h.UserID == _user.UserID &&
                             (h.Status == null || h.Status == "Active") &&
                             h.StartDate <= day &&
-                            ( ! h.UseEndCondition || h.EndDate == null || h.EndDate >= day))
+                            (!h.UseEndCondition || h.EndDate == null || h.EndDate >= day))
                 .ToList();
 
             var ids = habits.Select(h => h.HabitID).ToList();
@@ -439,27 +556,60 @@ namespace OOP_Semester.ViewModels
         {
             if (item.IsSkipped) item.IsSkipped = false;
 
+            // Chỉ đảo ngược trạng thái hoàn thành và cập nhật vàng
             if (!item.IsCounterType)
             {
-                bool isTurningOn = !item.IsCompleted;
-                item.IsCompleted = isTurningOn;
+                item.IsCompleted = !item.IsCompleted;
                 item.CurrentCount = item.IsCompleted ? item.TargetCount : 0;
-
-                // 🔥 LOGIC VÀNG: Checkbox
-                if (isTurningOn) UpdateUserGold(2);
-                else UpdateUserGold(-2);
             }
             else
             {
-                // Counter habit (bấm nút check là set full)
-                if (!item.IsCompleted) UpdateUserGold(2); // Cộng vàng nếu trước đó chưa xong
+                // Với dạng đếm, mặc định là đặt lên max khi check
                 item.CurrentCount = item.TargetCount;
                 item.IsCompleted = true;
             }
 
+            // Cập nhật vàng dựa trên trạng thái mới
+            if (item.IsCompleted) UpdateUserGold(2);
+            else UpdateUserGold(-2);
+
             UpdateSubtitle(item);
-            UpsertHabitLog(item);
-            UpdateHeader();
+            UpsertHabitLog(item); // Lưu vào HabitLog với TimeOfDay động
+            UpdateHeader();       // Cập nhật tiến độ % trên thanh tiêu đề
+        }
+
+        private void UpsertHabitLog(HabitItemDisplay item)
+        {
+            if (_user == null) return;
+            var day = SelectedDate.Date;
+            using var db = new AppDbContext(); // Dùng using để đóng kết nối ngay, tránh lỗi File in use
+
+            var log = db.HabitLogs.FirstOrDefault(l => l.HabitID == item.HabitID && l.LogDate == day);
+
+            // Quyết định buổi dựa trên giờ thực tế
+            int hour = DateTime.Now.Hour;
+            string session = hour < 12 ? "Morning" : (hour < 18 ? "Afternoon" : "Evening");
+
+            if (log == null)
+            {
+                db.HabitLogs.Add(new HabitLog
+                {
+                    HabitID = item.HabitID,
+                    LogDate = day,
+                    Quantity = item.IsSkipped ? 0 : item.CurrentCount,
+                    Completed = !item.IsSkipped && item.IsCompleted,
+                    Skipped = item.IsSkipped,
+                    TimeOfDay = session
+                });
+            }
+            else
+            {
+                log.Quantity = item.IsSkipped ? 0 : item.CurrentCount;
+                log.Completed = !item.IsSkipped && item.IsCompleted;
+                log.Skipped = item.IsSkipped;
+                log.TimeOfDay = session;
+            }
+            db.SaveChanges();
         }
 
         private void ChangeCounterAndSave(HabitItemDisplay item, int delta)
@@ -467,7 +617,7 @@ namespace OOP_Semester.ViewModels
             if (item.IsSkipped) item.IsSkipped = false;
             if (!item.IsCounterType) return;
 
-            bool wasCompleted = item.IsCompleted; // Trạng thái cũ
+            bool wasCompleted = item.IsCompleted;
 
             int next = item.CurrentCount + delta;
             if (next < 0) next = 0;
@@ -476,10 +626,7 @@ namespace OOP_Semester.ViewModels
             item.CurrentCount = next;
             item.IsCompleted = item.CurrentCount >= item.TargetCount;
 
-            // 🔥 LOGIC VÀNG: Counter
-            // Nếu vừa hoàn thành -> Cộng
             if (!wasCompleted && item.IsCompleted) UpdateUserGold(2);
-            // Nếu mất trạng thái hoàn thành -> Trừ
             else if (wasCompleted && !item.IsCompleted) UpdateUserGold(-2);
 
             UpdateSubtitle(item);
@@ -489,7 +636,6 @@ namespace OOP_Semester.ViewModels
 
         private void ToggleSkipAndSave(HabitItemDisplay item)
         {
-            // 🔥 LOGIC VÀNG: Nếu đang hoàn thành mà bấm Skip -> Thu hồi vàng
             if (item.IsCompleted)
             {
                 UpdateUserGold(-2);
@@ -514,60 +660,50 @@ namespace OOP_Semester.ViewModels
                : (item.IsCompleted ? "Hoàn thành" : (item.IsSkipped ? "Đã bỏ qua" : $"{item.TargetCount} {item.Unit}"));
         }
 
-        // 🔥 HÀM CẬP NHẬT VÀNG
         private void UpdateUserGold(int amount)
         {
-            if (_user == null) return;
+            if (_user == null || amount == 0) return;
 
-            // 1. Cập nhật trên giao diện ngay lập tức
             int currentGold = _user.GoldAmount ?? 0;
-            int newGold = currentGold + amount;
-            if (newGold < 0) newGold = 0; // Không để âm tiền
+            int newGold = Math.Max(0, currentGold + amount);
 
+            // Cập nhật local UI
             _user.GoldAmount = newGold;
-            Coins = newGold; // Property Coins đã bind lên View
+            Coins = newGold;
 
-            // 2. Cập nhật xuống Database
             using (var context = new AppDbContext())
             {
                 var userInDb = context.Users.FirstOrDefault(u => u.UserID == _user.UserID);
                 if (userInDb != null)
                 {
+                    // 1. Cập nhật số dư vàng của User
                     userInDb.GoldAmount = newGold;
+
+                    // 2. Tạo bản ghi lịch sử giao dịch mới
+                    var transaction = new GoldTransaction
+                    {
+                        UserID = _user.UserID,
+                        Amount = amount,
+                        TransactionDate = DateTime.Now,
+                        // Tự động xác định nguồn dựa trên số tiền cộng hay trừ
+                        Source = amount > 0 ? "Nhiệm vụ" : "Cửa hàng",
+                        Note = amount > 0 ? $"Thưởng hoàn thành thói quen (+{amount})" : $"Mua vật phẩm ({amount})"
+                    };
+
+                    context.GoldTransactions.Add(transaction);
+
+                    // 3. Lưu toàn bộ thay đổi xuống DB
                     context.SaveChanges();
+
+                    // 4. Phát tín hiệu đồng bộ cho các ViewModel khác (như Shop)
+                    GlobalChangeHub.RaiseCoinsChanged(this, newGold);
                 }
             }
         }
 
-        private void UpsertHabitLog(HabitItemDisplay item)
-        {
-            if (_user == null) return;
-            var day = SelectedDate.Date;
-            using var context = new AppDbContext();
 
-            var log = context.HabitLogs.FirstOrDefault(l => l.HabitID == item.HabitID && l.LogDate == day);
 
-            if (log == null)
-            {
-                log = new HabitLog
-                {
-                    HabitID = item.HabitID,
-                    LogDate = day,
-                    Quantity = item.IsSkipped ? 0 : item.CurrentCount,
-                    Completed = !item.IsSkipped && item.IsCompleted,
-                    Skipped = item.IsSkipped,
-                    TimeOfDay = "Morning"
-                };
-                context.HabitLogs.Add(log);
-            }
-            else
-            {
-                log.Skipped = item.IsSkipped;
-                log.Completed = !item.IsSkipped && item.IsCompleted;
-                log.Quantity = item.IsSkipped ? 0 : item.CurrentCount;
-            }
-            context.SaveChanges();
-        }
+
 
         private void DeleteHabit(HabitItemDisplay item)
         {
@@ -626,3 +762,4 @@ namespace OOP_Semester.ViewModels
         }
     }
 }
+
