@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="Images\UserAvatar\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
 
   <ItemGroup>

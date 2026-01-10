@@ -21,8 +21,6 @@ namespace OOP_Semester.ViewModels
 
             // 2. Khởi tạo các Repository cần thiết
             IUserRepository userRepo = new UserRepository(context);
-
-            // 3. QUAN TRỌNG NHẤT: Đặt màn hình đầu tiên là Login (AuthViewModel)
             CurrentView = new AuthViewModel(userRepo, this);
         }
 

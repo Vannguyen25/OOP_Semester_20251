@@ -16,5 +16,5 @@ D:\OOP\OOP_Semester\App.xaml
 2121902270034
 Views\AdminView.xaml;Views\AuthView.xaml;Views\ChallengeView.xaml;Views\FeedingView.xaml;Views\HabitMonthWindow.xaml;Views\HabitView.xaml;Views\HomeView.xaml;Views\MainWindow.xaml;Views\NotifyView.xaml;Views\Report\AdChallengeReportView.xaml;Views\Report\AdUserReportView.xaml;Views\Report\DailyReportView.xaml;Views\Report\GoldTransactionReportView.xaml;Views\Report\HabitHistoryWindow.xaml;Views\SettingView.xaml;Views\ShopView.xaml;Views\StatisticView.xaml;Views\TodayView.xaml;
 
-True
+False
 

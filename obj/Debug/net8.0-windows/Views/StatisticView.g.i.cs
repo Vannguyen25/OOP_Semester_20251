@@ -55,7 +55,7 @@ namespace OOP_Semester.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/OOP_Semester;component/views/statisticview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/OOP_Semester;V1.0.0.0;component/views/statisticview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\StatisticView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

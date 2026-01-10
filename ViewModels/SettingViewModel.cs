@@ -114,8 +114,6 @@ namespace OOP_Semester.ViewModels
             SavePetCommand = new RelayCommand(o => HandleSavePet());
             SaveTimesCommand = new RelayCommand(o => HandleSaveTimes());
 
-            // Logic gửi phản hồi
-            // Trong Constructor của SettingViewModel:
 
             SendFeedbackCommand = new RelayCommand(o =>
             {
